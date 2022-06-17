@@ -41,6 +41,8 @@ public class User {
 	private Date dob;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Bid> bids = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Interest> interests = new ArrayList<>();
 	private boolean enabled;
 	private boolean deleted;
 

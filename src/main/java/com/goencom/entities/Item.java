@@ -1,5 +1,6 @@
 package com.goencom.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -25,7 +26,7 @@ public class Item {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private AuctionHouse auctionHouse;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Image> images;
+	private List<Image> images = new ArrayList<>();
 	private Boolean enabled;
 	private Boolean deleted;
 	private Boolean Visible;
