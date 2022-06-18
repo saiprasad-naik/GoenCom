@@ -3,6 +3,7 @@ package com.goencom.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,6 +18,8 @@ import com.goencom.helper.Message;
 public class HomeController {
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String home() {
@@ -43,6 +46,7 @@ public class HomeController {
 	public String register(@ModelAttribute("user") User user, Model model, HttpSession session) {
 		try {
 			user.setEnabled(true);
+			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userRepository.save(user);
 			session.setAttribute("message", new Message("successfully registered!!!", "alert-success"));
 		} catch (Exception e) {
@@ -53,5 +57,10 @@ public class HomeController {
 		}
 		
 		return "signin";
+	}
+	
+	@RequestMapping("/auction-house-login")
+	public String auctionHouseSignIn() {
+		return "auction-house-login";
 	}
 }

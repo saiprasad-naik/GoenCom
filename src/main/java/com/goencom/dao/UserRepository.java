@@ -7,6 +7,6 @@ import org.springframework.data.repository.query.Param;
 import com.goencom.entities.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
-	@Query("select u from User u where u.email = : email")
+	@Query("select u from User u where u.email = :email")
 	public User getUserByEmail(@Param("email")String email);
 }

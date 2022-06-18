@@ -17,20 +17,26 @@
 <body>
 
 	<div class="container-form">
-		<form action="">
+		<form action="/do-sign-in" method="post">
 			<i class="fa-solid fa-user-check"></i>
 			<h3>
 				Sign in to <span>GoenCom.</span>
 			</h3>
+			<div th:if="${param.error}" class="alert alert-danger">
+				invalid email or password
+			</div>
+			<div th:if="${param.logout}" class="alert alert-danger">
+				logged out successfully
+			</div>
 			<div class="alert alert-primary" th:if="${session.message}"
 				th:classappend="${session.message.type}" role="alert">
 				<span th:text="${session.message.content}"></span>
 				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
 			</div>
-			<input type="email" id="email" name="email" placeholder="Enter email"
+			<input type="email" id="email" name="username" placeholder="Enter email"
 				required /> <input type="password" id="password" name="password"
 				placeholder="Enter password" required /> <a href="#"><button
-					type="button" class="btn1">Sign in</button></a>
+					type="submit" class="btn1">Sign in</button></a>
 
 			<p>
 				New to GoenCom? Create a <a href="/sign-up">New Account</a>
