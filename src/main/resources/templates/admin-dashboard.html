@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="#">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <title>Admin Dashboard- Goencom</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+</style>
+  </head>
+  <body>
+
+    <!-- Navbar starts here -->
+    <section>
+        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+            <div class="container">
+                <a href="#" class="navbar-brand mb-0 h1 pr-5">
+                    GoenCom.
+                </a> <i class="fa-solid fa-cutlery"></i>
+                    
+                <button type="button" class="btn btn-outline-light" onclick="logout()">Logout</button>             
+            </div>
+         </div>
+        </nav>
+    </section>
+    <!-- Navbar ends here -->
+
+<div class="main">
+        <button id="manage-users"><a href="admin-manage-users.html">Manage Users</a></button>
+        <button id="manage-auction-house"><a href="admin-manage-auction-house.html">Manage Auction Houses</a></button>
+        <button id="manage-items"><a href="admin-manage-items.html">Manage Items</a></button>
+</div>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',
+        sans-serif;
+    }
+
+    .main{
+        margin: 100px auto;
+        text-align: center;
+        background-color:rgb(98, 98, 223) ;
+        padding: 5rem;
+        width: 80%;
+        border-radius: 25px;
+    }
+
+    #manage-users, #manage-items, #manage-auction-house{
+        display: block;
+        width: 70%;
+        margin: 2rem auto;
+        padding: 2rem;
+        border-radius: 20px;
+        font-size: 20px;
+        font-weight: 900;
+        border: none;
+    }
+
+    button:hover{
+        background-color: black;
+    }
+
+    button a{
+        text-decoration: none;
+        color: black;
+    }
+    button a:hover{
+        color: white;
+    }
+
+    @media screen and (max-width: 980px) {
+        .main{
+            width: 90%;
+            padding: 1rem;
+        }
+
+        #manage-users, #manage-items, #manage-auction-house{
+            width: 90%
+        }
+
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <script>
+  function logout()
+  {
+      location.href = "./signin.html";
+  } 
+</script>
+
+
+  </body>
+</html>

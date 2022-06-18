@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign In to GoenCom.</title>
+<link rel="stylesheet" th:href="@{/css/signin.css}">
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
+<style>
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
+</style>
+</head>
+<body>
+
+	<div class="container-form">
+		<form action="">
+			<i class="fa-solid fa-user-check"></i>
+			<h3>
+				Sign in to <span>GoenCom.</span>
+			</h3>
+			<div class="alert alert-primary" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
+			</div>
+			<input type="email" id="email" name="email" placeholder="Enter email"
+				required /> <input type="password" id="password" name="password"
+				placeholder="Enter password" required /> <a href="#"><button
+					type="button" class="btn1">Sign in</button></a>
+
+			<p>
+				New to GoenCom? Create a <a href="/sign-up">New Account</a>
+			</p>
+			<p>
+				Go back <a href="/">Home</a>
+			</p>
+		</form>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,261 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',
+    sans-serif;
+}
+
+.one{
+    margin: 300px auto 100px auto;
+}
+
+.navbar{
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.btn-outline-light{
+    margin-left: 50rem;
+}
+
+
+.header-text{
+    margin-top: 100px;
+    font-size: 3em;
+    text-align: center;
+}
+span{
+    font-weight: bold;
+    color: rgb(98, 98, 223); ;
+}
+
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+.gallery, .upcoming-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#outergallery, #upcoming-outergallery{
+    width: 95%;
+    margin: 5rem auto;
+    padding: 1rem;
+    border-radius: 20px;
+    background-color: rgb(98, 98, 223);
+}
+
+.live-bid-heading{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 3rem
+}
+
+#content, #upcoming-content {
+    width: 20%;
+    margin: 15px;
+    float: left;
+    text-align: center;
+    border-radius: 20px;
+    padding-top: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    background: #f2f2f2;
+}
+
+#content:hover, #upcoming-content:hover {
+    box-shadow: rgba(22, 22, 23, 0.2) 0px 7px 29px 0px;
+    transform: translate(0px, -8px);
+}
+
+img {
+    width: 90%;
+    height: 8%;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+p {
+    text-align: center;
+    color: grey;
+    padding-top: 0 8px;
+}
+
+h6 {
+    font-size: 26px;
+    text-align: center;
+    color: rgb(43, 43, 43);
+    margin: 0;
+}
+
+
+
+.buy {
+    background-color: rgb(98, 98, 223);
+}
+
+@media screen and (max-width: 980px) {
+    #content, #upcoming-content {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #content, #upcoming-content {
+        width: 100%;
+    }
+}
+
+ .body2{
+background-color: rgb(98, 98, 223);
+padding: 10em 0em;
+width: 95%;
+margin: 5rem auto;
+border-radius: 20px;
+text-align: left;
+}
+
+.about-heading{
+    color: black;
+    font-weight: bold;
+}
+
+.inner-about{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.about{
+    
+    margin-top: 150px;
+    /* margin: 50px 30px; */
+    padding: 50px 45px;
+    background-color: white;
+    width: 70%;
+    margin: auto;
+    border-radius: 20px;
+    font-size: 1em;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.about p{
+    text-align: left;
+}
+
+
+/* footer starts here */
+.footer{
+    margin-top: 2rem;
+    background-color: rgb(40, 39, 39);
+    color: white;
+    padding: 1rem 10rem;
+    text-align: center;
+}
+
+.footer h3{
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+#contact{
+    font-weight: 400;
+    color: gray;
+}
+
+.footer h4{
+    font-weight: bold;
+        font-size: 15px;
+        text-align: center;
+        margin: .5rem auto;
+}
+
+.footer .half3{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    color: white;
+    align-items: center;
+}
+
+.footer a{
+    text-decoration: underline;
+    color: gray;
+}
+
+.footer a:hover{
+    color: white;
+}
+
+.footer .socials{
+    display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        color: white;
+        width: 50%;
+        margin: .5rem auto;
+}
+
+/* footer ends here  */
+
+@media screen and (max-width: 980px) {
+    .inner-about {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about {
+        width: 90%;
+        padding: 50px 15px;
+    }
+
+    .footer{
+        padding: 1rem;
+    }
+
+    .footer .half3 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+    }
+    .footer .socials {
+        margin: 1rem auto;
+    }
+
+
+
+}
+
+
+
+@media screen and (max-width: 1040px) {
+    .btn-outline-light {
+        margin-left: 20rem;
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+    .btn-outline-light {
+        margin-left: 10rem;
+    }
+
+}
+
+@media screen and (max-width: 440px) {
+    .btn-outline-light {
+        margin-left: 0rem;
+    }
+
+}

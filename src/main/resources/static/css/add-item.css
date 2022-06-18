@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins',
+    sans-serif;
+}
+.navbar {
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+body{
+    background-color: rgb(98, 98, 223);
+}
+
+.container-form{
+    width: 70%;
+   background-color: white;
+   margin: 100px auto;
+   text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 7px 19px 0px;
+    border-radius: 20px;
+}
+
+form{
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    color: black;
+    align-items: center;
+    
+}
+
+h3{
+    font-size: 30px;
+}
+
+input[type="name"] {
+    font-size: 15px;
+    /* background-color: rgba(192, 186, 186, 0.6); */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding: .7rem;
+    border: none;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+input[type="email"] {
+    font-size: 15px;
+    /* background-color: rgba(192, 186, 186, 0.6); */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding: .7rem;
+    border: none;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+input[type="tel"] {
+    font-size: 15px;
+    /* background-color: rgba(192, 186, 186, 0.6); */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding: .7rem;
+    border: none;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+input[type="url"] {
+    font-size: 15px;
+    /* background-color: rgba(192, 186, 186, 0.6); */
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding: .7rem;
+    border: none;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+#item-desc, #auction-house-address{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    resize: none;
+    border: none;
+    color: black;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+    padding: 1rem;
+}
+
+input[type="number"] {
+    font-size: 15px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding: .7rem;
+    border: none;
+    width: 70%;
+    font-weight: bold;
+    margin-top: 1rem ;
+    border-radius: 20px;
+}
+
+input[type="submit"] {
+    font-size: 15px;
+    color: black;
+    padding: .7rem .2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    width: 10%;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+input[type="file"] {
+    width: 70%;
+    font-size: 15px;
+    color: black;
+    padding: 1rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+
+button{
+   
+    font-size: 15px;
+    color: black;
+    padding: .7rem ;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    border-radius: 20px;
+}
+
+.dates1, .dates2{
+    display: inline;
+    margin-top: 1rem;
+    font-weight: 800;
+}
+
+@media screen and (max-width: 980px) {
+
+    .container-form{
+        width: 90%;
+    }
+
+    form{
+        padding: 1rem;
+    }
+
+    input[type="name"] {
+        width: 100%;
+    }
+
+    input[type="email"] {
+        width: 100%;
+    }
+
+    #item-desc, #auction-house-address{
+        width: 100%;
+    }
+
+    input[type="file"] {
+        width: 100%;
+    }
+
+    input[type="number"] {
+        width: 100%;
+    }
+
+    input[type="url"] {
+        width: 100%;
+    }
+
+    input[type="tel"] {
+        width: 100%;
+    }
+    
+    input[type="submit"] {
+        width: 100%;
+    }
+    .container {
+        width: 90%;
+        padding: 50px 15px;
+    }
+}

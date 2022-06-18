@@ -43,6 +43,7 @@ public class User {
 	private List<Bid> bids = new ArrayList<>();
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Interest> interests = new ArrayList<>();
+	private char gender;
 	private boolean enabled;
 	private boolean deleted;
 
@@ -169,6 +170,30 @@ public class User {
 
 	public void setBids(List<Bid> bids) {
 		this.bids = bids;
+	}
+
+	public List<Interest> getInterests() {
+		return interests;
+	}
+
+	public void setInterests(List<Interest> interests) {
+		this.interests = interests;
+	}
+
+	public char getGender() {
+		return gender;
+	}
+
+	public void setGender(char gender) {
+		this.gender = gender;
+	}
+
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", fName=" + fName + ", lName=" + lName + ", phoneNo=" + phoneNo + ", street="
+				+ street + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode=" + pincode
+				+ ", email=" + email + ", password=" + password + ", dob=" + dob + ", bids=" + bids + ", interests="
+				+ interests + ", gender=" + gender + ", enabled=" + enabled + ", deleted=" + deleted + "]";
 	}
 
 }

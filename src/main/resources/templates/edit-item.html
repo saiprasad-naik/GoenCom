@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit An Item- GoenCom</title>
+    <link rel="stylesheet" href="./add-item.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+    </style>
+</head>
+<body>
+
+        <div class="container-form">
+        <form action="">
+            <h3>Edit Item</h3>
+            
+            <input
+            type="name" id="item-name"
+            name="name"
+            placeholder="Enter item name"
+            maxlength="50" required/> 
+          
+            <textarea name="description" id="item-desc" cols="70" rows="10" placeholder="Enter item description" required></textarea>
+          
+            <input type="file" id="item-pics" name="pics" placeholder="Enter pictures" multiple required>
+
+            <input type="number" min="0" max="100000000" step="any" name="Base Price" id="base-price" placeholder="Base price (rupees)"  required="required">
+           
+            <input type="submit" name="Save Item" value="Save" />
+            <a href="./manage-auction-items.html"><button type="button" class="btn1">Cancel</button></a>
+        </form>
+    </div>
+
+</body>
+</html>

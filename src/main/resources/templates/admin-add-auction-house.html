@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Add Auction House- GoenCom</title>
+    <link rel="stylesheet" href="./add-item.css">
+    <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+    </style>
+</head>
+<body>
+
+        <div class="container-form">
+        <form action="">
+            <i class="fa-solid fa-gavel"></i>
+            <h3>Add Auction House</h3>
+            
+            <input
+            type="name" id="auction-house-name"
+            name="name"
+            placeholder="Enter Auction House name"
+            maxlength="50" required/> 
+
+            <input
+            type="email" id="auction-house-email"
+            name="email"
+            placeholder="Enter Auction House email"
+            maxlength="50" required/> 
+            
+            <input type="tel" id="auction-house-phno" name="auction-house-phone" placeholder="Enter Auction House Phone Number">
+
+            <input type="url" id="auction-house-website" name="website" placeholder="Enter Auction House Website URL" required  >
+
+            <textarea name="auction-house-address" id="auction-house-address" cols="70" rows="10" placeholder="Enter Auction House Address" required></textarea>
+          
+            <input type="file" id="item-pics" name="pics" placeholder="Enter pictures" multiple required>
+
+            <input type="submit" id="add-auction-house" name="add-auction-house" value="Add" />
+            <a href="./admin-manage-auction-house.html"><button type="button" class="btn1">Cancel</button></a>
+        </form>
+    </div>
+
+</body>
+</html>
