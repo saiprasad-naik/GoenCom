@@ -27,6 +27,7 @@ public class Item {
 	private AuctionHouse auctionHouse;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Image> images = new ArrayList<>();
+	private int basePrice;
 	private Boolean enabled;
 	private Boolean deleted;
 	private Boolean Visible;
@@ -106,6 +107,14 @@ public class Item {
 
 	public void setVisible(Boolean visible) {
 		Visible = visible;
+	}
+
+	public int getBasePrice() {
+		return basePrice;
+	}
+
+	public void setBasePrice(int basePrice) {
+		this.basePrice = basePrice;
 	}
 
 }

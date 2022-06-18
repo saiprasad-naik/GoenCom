@@ -1,121 +1,145 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./auction-house.css">
+<link rel="stylesheet" th:href="@{/css/auction-house.css}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-     <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
-  <title>Goencom Navbar</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
+<title>Goencom Navbar</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
 </style>
-  </head>
-  <body>
+</head>
+<body>
 
-    <!-- Navbar starts here -->
-    <section>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-            <a href="#" class="navbar-brand mb-0 h1 pr-5">
-                GoenCom.
-            </a> <i class="fa-solid fa-cutlery"></i>
+	<!-- Navbar starts here -->
+	<section>
+		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+			<div class="container">
+				<a href="#" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+					class="fa-solid fa-cutlery"></i>
 
-            <button type="button"    data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-           
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-
-            <li class="nav-item ">
-              <a href="./manage-auction-items.html" class="nav-link">Manage Items</a>
-            </li>
-            <li class="nav-item ">
-              <a href="./manage-auction.html" class="nav-link">Manage Auctions</a>
-            </li>
-            
-            <li class="nav-item ">
-              <a href="#footer" class="nav-link">Contact</a>
-            </li>
-
-               <button type="button" class="btn btn-outline-light" onclick="logout()">Logout</button>             
-            </ul>
-            </div>
-         </div>
-        </nav>
-    </section>
-    <!-- Navbar ends here -->
-
-    <div class="main">
-      <div class="auction-house-card">
-        <h1 id="auction-house-name">Vaibhav Creations</h1>
-        <img id="auction-house-pic" src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="">
-
-        <div class="auction-house-details">
-         
-          <div class="half1">
-            <p>Address: <span id="auction-house-address">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, reprehenderit?</span>
-            </p>
-            <p>Description: <span id="auction-house-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum officia harum nobis ipsum pariatur quasi magnam a laborum in perferendis.</span></p>
-            <p>Phone Number: <span id="auction-house-phno">123456789</span></p>
-            <p >Email ID: <span id="auction-house-email">Lorem ipsum dolor sit amet.</span></p>
-          </div>
-          
-          <div class="half2">
-            <a href="./manage-auction-items.html" id="user-bidded-items">Manage Items</a>
-            <a href="./manage-auction.html" id="user-bidding-history">Manage Auction</a>
-          </div>
-
-        </div>
-       <button id="edit-auction-house"><a href="./edit-auction-house.html">Edit</a> </button>
-      </div>
+				<button type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" class="navbar-toggler"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="toggle">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
 
 
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+
+						<li class="nav-item "><a href="manage-items"
+							class="nav-link">Manage Items</a></li>
+						<li class="nav-item "><a href="./manage-auction.html"
+							class="nav-link">Manage Auctions</a></li>
+
+						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						</li>
+
+						<button type="button" class="btn btn-outline-light"
+							onclick="logout()">Logout</button>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<!-- Navbar ends here -->
+
+	<div class="main">
+		<div class="auction-house-card">
+			<h1 id="auction-house-name" th:text="${auctionHouse.name}"></h1>
+			<img id="auction-house-pic"
+				th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}"
+				alt="">
+
+			<div class="auction-house-details">
+
+				<div class="half1">
+					<p>
+						Address: <span id="auction-house-address"
+							th:text="${auctionHouse.street} + ', ' + ${auctionHouse.city}+ ', ' + ${auctionHouse.state}+ ', ' + ${auctionHouse.country}+ ', ' + ${auctionHouse.pincode}"></span>
+					</p>
+					<p>
+						Description: <span id="auction-house-desc"
+							th:text="${auctionHouse.description}"></span>
+					</p>
+					<p>
+						Phone Number: <span id="auction-house-phno"
+							th:text="${auctionHouse.phoneNo}"></span>
+					</p>
+					<p>
+						Email ID: <span id="auction-house-email"
+							th:text="${auctionHouse.email}"></span>
+					</p>
+				</div>
+
+				<div class="half2">
+					<a href="manage-items" id="user-bidded-items">Manage
+						Items</a> <a href="./manage-auction.html" id="user-bidding-history">Manage
+						Auction</a>
+				</div>
+
+			</div>
+			<button id="edit-auction-house">
+				<a href="./edit-auction-house.html">Edit</a>
+			</button>
+		</div>
 
 
 
 
 
-    </div>
-    
- <div id="footer">
-    <div class="footer">
-        <h3>GoenCom.com</h3>
-        <p>All rights reserved</p>
-         <h4>Contact Us</h4>
-        <div class="half3">
-          <p>GoenCom</p>
-          <p>Goa, India</p>
-          <a href="tel:+919922928253">Call: 9988234518</a>
-          <a href = "mailto: goencombusiness@gmail.com">Send Email: goencombusiness@gmail.com</a>
-          <a href="./about-us.html">About GoenCom</a>
-      </div>
-      <div class="socials">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      </div>
- </div> 
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <script>
+	</div>
+
+	<div id="footer">
+		<div class="footer">
+			<h3>GoenCom.com</h3>
+			<p>All rights reserved</p>
+			<h4>Contact Us</h4>
+			<div class="half3">
+				<p>GoenCom</p>
+				<p>Goa, India</p>
+				<a href="tel:+919922928253">Call: 9988234518</a> <a
+					href="mailto: goencombusiness@gmail.com">Send Email:
+					goencombusiness@gmail.com</a> <a href="./about-us.html">About
+					GoenCom</a>
+			</div>
+			<div class="socials">
+				<i class="fa-brands fa-twitter"></i> <i
+					class="fa-brands fa-facebook"></i> <i
+					class="fa-brands fa-instagram"></i>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script>
   function logout()
   {
       location.href = "./signin.html";

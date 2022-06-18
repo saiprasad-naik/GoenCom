@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./manage-auction-items.css">
+    <link rel="stylesheet" th:href="@{/css/manage-auction-items.css}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
@@ -66,7 +66,7 @@
      <div class="gallery">
      
         <div id="content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="">
+            <img th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}" alt="">
             <h3 id="itemname">Lorem ipsum.</h3>
             <h5 id="auchouse">Lorem ipsum.</h5>
             <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
@@ -113,7 +113,7 @@
   } 
 
   function additem(){
-    location.href = "./add-item.html"
+    location.href = "new-item"
   }
 </script>
 
