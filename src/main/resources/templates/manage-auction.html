@@ -1,119 +1,143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
- <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./manage-auction-items.css">
+<link rel="stylesheet" th:href="@{/css/manage-auction-items.css}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
-  <title>Manage Auction- GoenCom</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
+<title>Manage Auction- GoenCom</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
 </style>
 </head>
-  
-  <body>
 
-    <!-- Navbar starts here -->
-     <section>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-            <a href="#" class="navbar-brand mb-0 h1 pr-5">
-                GoenCom.
-            </a> <i class="fa-solid fa-cutlery"></i>
+<body>
 
-            <button type="button"    data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+	<!-- Navbar starts here -->
+	<section>
+		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+			<div class="container">
+				<a href="#" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+					class="fa-solid fa-cutlery"></i>
 
-           
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-            
-            <li class="nav-item ">
-              <a href="./manage-auction-items.html" class="nav-link">Manage Items</a>
-            </li>
-            <li class="nav-item ">
-              <a href="./manage-auction.html" class="nav-link">Manage Auctions</a>
-            </li>
-            <li class="nav-item ">
-              <a href="#footer" class="nav-link">Contact</a>
-            </li>
-                 
-               <button type="button" class="btn btn-outline-light" onclick="logout()">Logout</button>             
-            </ul>
-            </div>
-         </div>
-        </nav>
-    </section>
-    <!-- Navbar ends here -->
-
-    <div class="main">
-        <div id="outergallery">
-    <h2 class="live-bid-heading">Manage Auction</h2>
-    <button id="add-item" onclick="additem()">Add An Item To The Auction</button>
-
-     <div class="gallery">
-     
-        <div id="content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="">
-            <h3 id="itemname">Lorem ipsum.</h3>
-            <h5 id="auchouse">Lorem ipsum.</h5>
-            <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-            <button id="edit-item">Suspend</button>
-            <button id="delete-item">Delete</button>
-        </div>
-        
-
-           
-        
-    </div>
-
-  </div>
-</div>
-    
-
- <div id="footer">
-    <div class="footer">
-        <h3>GoenCom.com</h3>
-        <p>All rights reserved</p>
-         <h4>Contact Us</h4>
-        <div class="half3">
-          <p>GoenCom</p>
-          <p>Goa, India</p>
-          <a href="tel:+919922928253">Call: 9988234518</a>
-          <a href = "mailto: goencombusiness@gmail.com">Send Email: goencombusiness@gmail.com</a>
-          <a href="./about-us.html">About GoenCom</a>
-      </div>
-      <div class="socials">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      </div>
- </div>    
+				<button type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" class="navbar-toggler"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="toggle">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <script>
+
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+
+						<li class="nav-item "><a href="./manage-auction-items.html"
+							class="nav-link">Manage Items</a></li>
+						<li class="nav-item "><a href="./manage-auction.html"
+							class="nav-link">Manage Auctions</a></li>
+						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						</li>
+
+						<button type="button" class="btn btn-outline-light"
+							onclick="logout()">Logout</button>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<!-- Navbar ends here -->
+
+	<div class="main">
+		<div id="outergallery">
+			<h2 class="live-bid-heading">Manage Auction</h2>
+			<button id="add-item" onclick="additem()">Add An Item To The
+				Auction</button>
+
+			<div class="gallery">
+
+				<div id="content" th:each="a : ${auctions}">
+					<img th:src="@{'/images/' + ${a.item.images[0].url}}" alt="">
+					<h3 id="itemname" th:text="${a.item.name}"></h3>
+					<h5 id="auchouse" th:text="${a.user.name}"></h5>
+					<p id="itemdesc" th:text="${a.item.description}"></p>
+					<h6 id="base-price">
+						Base price : &#8377;<span th:text="${a.item.basePrice}"></span>
+					</h6>
+					<button id="edit-item">Suspend</button>
+					<button id="delete-item">Delete</button>
+				</div>
+
+
+
+
+			</div>
+			<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
+						class="page-link" th:href="${currentPage} - 1">Previous</a></li>
+					<li class="page-item"
+						th:classappend="${currentPage==p-1?'active':''}"
+						th:each="p : ${#numbers.sequence(1,totalPages)}"><a
+						class="page-link" th:href="${p} - 1"><span th:text="${p}"></span></a></li>
+					<li class="page-item" th:if="${currentPage + 1 != totalPages}"><a
+						class="page-link" th:href="${currentPage} + 1">Next</a></li>
+				</ul>
+			</nav>
+
+
+		</div>
+	</div>
+
+
+	<div id="footer">
+		<div class="footer">
+			<h3>GoenCom.com</h3>
+			<p>All rights reserved</p>
+			<h4>Contact Us</h4>
+			<div class="half3">
+				<p>GoenCom</p>
+				<p>Goa, India</p>
+				<a href="tel:+919922928253">Call: 9988234518</a> <a
+					href="mailto: goencombusiness@gmail.com">Send Email:
+					goencombusiness@gmail.com</a> <a href="./about-us.html">About
+					GoenCom</a>
+			</div>
+			<div class="socials">
+				<i class="fa-brands fa-twitter"></i> <i
+					class="fa-brands fa-facebook"></i> <i
+					class="fa-brands fa-instagram"></i>
+			</div>
+		</div>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script>
   function logout()
   {
-      location.href = "./signin.html";
+      location.href = "/logout";
   } 
 
   function additem(){
-    location.href = "./item-list-auction-house.html"
+    location.href = "/auction-house/new-auction/0"
   }
 </script>
 

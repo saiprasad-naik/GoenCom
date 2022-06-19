@@ -14,4 +14,7 @@ public interface ItemRepository extends JpaRepository<Item, Integer>{
 	
 	@Query("from Item as i where i.user.userId =:userId ")
 	public Page<Item> findItemsByUser(@Param("userId") int userId, Pageable pageable);
+	
+	@Query("from Item as i where i.user.userId =:userId and i.auctioned = false")
+	public Page<Item> findItemsByUserForAuction(@Param("userId") int userId, Pageable pageable);
 }

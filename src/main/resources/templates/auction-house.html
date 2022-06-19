@@ -48,7 +48,7 @@
 
 						<li class="nav-item "><a href="manage-items/0"
 							class="nav-link">Manage Items</a></li>
-						<li class="nav-item "><a href="./manage-auction.html"
+						<li class="nav-item "><a href="manage-auction/0"
 							class="nav-link">Manage Auctions</a></li>
 
 						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
@@ -62,6 +62,11 @@
 		</nav>
 	</section>
 	<!-- Navbar ends here -->
+<div class="alert alert-primary" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
+			</div>
 
 	<div class="main">
 		<div class="auction-house-card">
@@ -93,13 +98,13 @@
 
 				<div class="half2">
 					<a href="manage-items/0" id="user-bidded-items">Manage
-						Items</a> <a href="./manage-auction.html" id="user-bidding-history">Manage
+						Items</a> <a href="manage-auction/0" id="user-bidding-history">Manage
 						Auction</a>
 				</div>
 
 			</div>
 			<button id="edit-auction-house">
-				<a href="./edit-auction-house.html">Edit</a>
+				<a href="edit-details">Edit</a>
 			</button>
 		</div>
 

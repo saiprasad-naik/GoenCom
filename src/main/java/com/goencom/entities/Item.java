@@ -31,6 +31,7 @@ public class Item {
 	private Boolean enabled;
 	private Boolean deleted;
 	private Boolean Visible;
+	private Boolean auctioned;
 
 	public Item() {
 		super();
@@ -115,6 +116,14 @@ public class Item {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Boolean getAuctioned() {
+		return auctioned;
+	}
+
+	public void setAuctioned(Boolean auctioned) {
+		this.auctioned = auctioned;
 	}
 
 }
