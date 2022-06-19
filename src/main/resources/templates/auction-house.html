@@ -46,7 +46,7 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 
-						<li class="nav-item "><a href="manage-items"
+						<li class="nav-item "><a href="manage-items/0"
 							class="nav-link">Manage Items</a></li>
 						<li class="nav-item "><a href="./manage-auction.html"
 							class="nav-link">Manage Auctions</a></li>
@@ -65,7 +65,7 @@
 
 	<div class="main">
 		<div class="auction-house-card">
-			<h1 id="auction-house-name" th:text="${auctionHouse.name}"></h1>
+			<h1 id="auction-house-name" th:text="${user.name}"></h1>
 			<img id="auction-house-pic"
 				th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}"
 				alt="">
@@ -75,24 +75,24 @@
 				<div class="half1">
 					<p>
 						Address: <span id="auction-house-address"
-							th:text="${auctionHouse.street} + ', ' + ${auctionHouse.city}+ ', ' + ${auctionHouse.state}+ ', ' + ${auctionHouse.country}+ ', ' + ${auctionHouse.pincode}"></span>
+							th:text="${user.street} + ', ' + ${user.city}+ ', ' + ${user.state}+ ', ' + ${user.country}+ ', ' + ${user.pincode}"></span>
 					</p>
 					<p>
 						Description: <span id="auction-house-desc"
-							th:text="${auctionHouse.description}"></span>
+							th:text="${user.description}"></span>
 					</p>
 					<p>
 						Phone Number: <span id="auction-house-phno"
-							th:text="${auctionHouse.phoneNo}"></span>
+							th:text="${user.phoneNo}"></span>
 					</p>
 					<p>
 						Email ID: <span id="auction-house-email"
-							th:text="${auctionHouse.email}"></span>
+							th:text="${user.email}"></span>
 					</p>
 				</div>
 
 				<div class="half2">
-					<a href="manage-items" id="user-bidded-items">Manage
+					<a href="manage-items/0" id="user-bidded-items">Manage
 						Items</a> <a href="./manage-auction.html" id="user-bidding-history">Manage
 						Auction</a>
 				</div>
@@ -142,7 +142,7 @@
 	<script>
   function logout()
   {
-      location.href = "./signin.html";
+      location.href = "/logout";
   } 
 </script>
 

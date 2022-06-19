@@ -1,11 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./admin-manage-items.css">
+    <link rel="stylesheet" th:href="@{/css/admin-manage-items.css}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
@@ -78,12 +78,12 @@
 
      <div class="items-gallery">
           
-        <div id="items-content">
+        <div id="items-content" th:each="c : ${items}">
             <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="item-name">Lorem ipsum.</h3>
-            <p id="item-desc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <h6 id="auction-house-phno">123456789</h6>
+            <h3 id="item-name" th:text="${c.name}"></h3>
+            <p id="item-desc" th:text="${c.description}"></p>
+            <h3 id="auction-house-name" th:text="${c.user.name}"></h3>
+            <h6 id="auction-house-phno" th:text="${c.basePrice}"></h6>
             <button id="suspend-item">Suspend</button>
             <button id="delete-item">Delete</button>
         </div>

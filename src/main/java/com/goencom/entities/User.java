@@ -44,8 +44,19 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Interest> interests = new ArrayList<>();
 	private char gender;
+	private String role;
 	private boolean enabled;
 	private boolean deleted;
+
+	// for auction house
+	private String name;
+	private String website;
+	@Column(length = 500)
+	private String Description;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Item> items = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Auction> auctions = new ArrayList<>();
 
 	public User() {
 		super();
@@ -188,12 +199,52 @@ public class User {
 		this.gender = gender;
 	}
 
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", fName=" + fName + ", lName=" + lName + ", phoneNo=" + phoneNo + ", street="
-				+ street + ", city=" + city + ", state=" + state + ", country=" + country + ", pincode=" + pincode
-				+ ", email=" + email + ", password=" + password + ", dob=" + dob + ", bids=" + bids + ", interests="
-				+ interests + ", gender=" + gender + ", enabled=" + enabled + ", deleted=" + deleted + "]";
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getDescription() {
+		return Description;
+	}
+
+	public void setDescription(String description) {
+		Description = description;
+	}
+
+	public List<Item> getItems() {
+		return items;
+	}
+
+	public void setItems(List<Item> items) {
+		this.items = items;
+	}
+
+	public List<Auction> getAuctions() {
+		return auctions;
+	}
+
+	public void setAuctions(List<Auction> auctions) {
+		this.auctions = auctions;
 	}
 
 }

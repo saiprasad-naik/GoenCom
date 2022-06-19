@@ -46,6 +46,7 @@ public class HomeController {
 	public String register(@ModelAttribute("user") User user, Model model, HttpSession session) {
 		try {
 			user.setEnabled(true);
+			user.setRole("ROLE_USER");
 			user.setPassword(passwordEncoder.encode(user.getPassword()));
 			userRepository.save(user);
 			session.setAttribute("message", new Message("successfully registered!!!", "alert-success"));
@@ -57,10 +58,5 @@ public class HomeController {
 		}
 		
 		return "signin";
-	}
-	
-	@RequestMapping("/auction-house-login")
-	public String auctionHouseSignIn() {
-		return "auction-house-login";
 	}
 }

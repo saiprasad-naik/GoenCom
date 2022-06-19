@@ -24,7 +24,7 @@ public class Item {
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Auction auction;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private AuctionHouse auctionHouse;
+	private User user;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Image> images = new ArrayList<>();
 	private int basePrice;
@@ -69,14 +69,6 @@ public class Item {
 		this.auction = auction;
 	}
 
-	public AuctionHouse getAuctionHouse() {
-		return auctionHouse;
-	}
-
-	public void setAuctionHouse(AuctionHouse auctionHouse) {
-		this.auctionHouse = auctionHouse;
-	}
-
 	public List<Image> getImages() {
 		return images;
 	}
@@ -115,6 +107,14 @@ public class Item {
 
 	public void setBasePrice(int basePrice) {
 		this.basePrice = basePrice;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

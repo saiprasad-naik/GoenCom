@@ -18,9 +18,14 @@
 
 	<div class="container-form">
 		<form action="" th:action="@{add-item}" method="post"
-			th:object="${item}">
+			enctype="multipart/form-data" th:object="${item}">
 			<i class="fa-solid fa-circle-check"></i>
 			<h3>Add An Item</h3>
+			<div class="alert" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
 
 			<input type="name" id="item-name" name="name"
 				placeholder="Enter item name" maxlength="50" th:value="${item.name}"
@@ -30,13 +35,13 @@
 				placeholder="Enter item description" th:text="${item.description}"
 				required></textarea>
 
-			<input type="file" id="item-pics" name="pics"
-				placeholder="Enter pictures" multiple > <input
-				type="number" min="0" max="100000000" step="any" name="basePrice"
-				id="base-price" placeholder="Base price (rupees)"
-				th:value="${item.basePrice}" required="required"> <input
-				type="submit" name="Add Item" value="Add Item" /> <a
-				href="manage-items"><button type="button" class="btn1">Cancel</button></a>
+			<input type="file" id="item-pics" name="image"
+				placeholder="Enter pictures" multiple> <input type="number"
+				min="0" max="100000000" step="any" name="basePrice" id="base-price"
+				placeholder="Base price (rupees)" th:value="${item.basePrice}"
+				required="required"> <input type="submit" name="Add Item"
+				value="Add Item" /> <a href="manage-items/0"><button
+					type="button" class="btn1">Cancel</button></a>
 		</form>
 	</div>
 

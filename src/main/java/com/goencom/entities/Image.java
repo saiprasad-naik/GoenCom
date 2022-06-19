@@ -17,7 +17,7 @@ public class Image {
 	private int imageId;
 	private String url;
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private User user;
+	private Item item;
 
 	public Image() {
 		super();
@@ -40,12 +40,12 @@ public class Image {
 		this.url = url;
 	}
 
-	public User getUser() {
-		return user;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 }
