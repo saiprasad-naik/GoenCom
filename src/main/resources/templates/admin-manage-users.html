@@ -1,154 +1,121 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" th:href="@{/css/admin-manage.css}">
+<link rel="stylesheet" th:href="@{/css/admin-manage.css}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
 
-     <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
 
-  <title>Admin Manage Users- GoenCom</title>
+<title>Admin Manage Users- GoenCom</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
 </style>
-  </head>
-  <body>
+</head>
+<body>
 
-  <!-- Navbar starts here -->
-    <section>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-            <a href="#" class="navbar-brand mb-0 h1 pr-5">
-                GoenCom.
-            </a> <i class="fa-solid fa-cutlery"></i>
+	<!-- Navbar starts here -->
+	<section>
+		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+			<div class="container">
+				<a href="#" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+					class="fa-solid fa-cutlery"></i>
 
-            <button type="button"    data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+				<button type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" class="navbar-toggler"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="toggle">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-           
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="./admin-dashboard.html" class="nav-link">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                    <a href="./admin-manage-users.html" class="nav-link">Manage Users</a>
-                </li>
 
-                 <li class="nav-item ">
-              <a href="./admin-manage-auction-house.html" class="nav-link">Manage Auction Houses</a>
-            </li>
 
-                <li class="nav-item ">
-              <a href="./admin-manage-items" class="nav-link">Manage Items</a>
-            </li>
-                
-               <button type="button" class="btn btn-outline-light" onclick="logout()">Logout</button>             
-            </ul>
-            </div>
-         </div>
-        </nav>
-    </section>
-    <!-- Navbar ends here -->
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item"><a href="./admin-dashboard.html"
+							class="nav-link">Dashboard</a></li>
+						<li class="nav-item"><a href="./admin-manage-users.html"
+							class="nav-link">Manage Users</a></li>
 
-<div class="main">
-    
-    <div id="outergallery">
-    <h2 class="live-bid-heading">Manage Users</h2>
+						<li class="nav-item "><a
+							href="./admin-manage-auction-house.html" class="nav-link">Manage
+								Auction Houses</a></li>
 
-    <div class="input-group rounded">
+						<li class="nav-item "><a href="./admin-manage-items"
+							class="nav-link">Manage Items</a></li>
+
+						<button type="button" class="btn btn-outline-light"
+							onclick="logout()">Logout</button>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<!-- Navbar ends here -->
+
+	<div class="main">
+
+		<div id="outergallery">
+			<h2 class="live-bid-heading">Manage Users</h2>
+
+			<!-- <div class="input-group rounded">
          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <span class="input-group-text border-0" id="search-addon">
          <i class="fas fa-search"></i>
         </span>
-    </div>
+    </div> -->
 
-     <div class="user-gallery">
-          
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
-        <div id="user-content">
-            <div class="name">
-                <h3 id="fname">Saiprasad</h3>
-                <h3 id="fname">Naik</h3>
-            </div>  
-            <h5 id="email">sai003@chowgules.ac.in</h5>
-            <h5 id="phnumber">123456789</h5>
-            <button id="suspend-user">Suspend</button>
-            <button id="delete-user">Delete</button>
-        </div>
+			<div class="user-gallery">
 
-         
-        
-        </div>
-      </div>
+				<div id="user-content" th:each="u : ${users}">
+					<div class="name">
+						<h3 id="fname" th:text="${u.fName}"></h3>
+						<h3 id="fname" th:text="${u.lName}"></h3>
+					</div>
+					<h5 id="email" th:text="${u.email}"></h5>
+					<h5 id="phnumber" th:text="${u.phoneNo}"></h5>
+					<button id="suspend-user">Suspend</button>
+					<button id="delete-user">Delete</button>
+				</div>
+				<nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
+						class="page-link" th:href="${currentPage} - 1">Previous</a></li>
+					<li class="page-item"
+						th:classappend="${currentPage==p-1?'active':''}"
+						th:each="p : ${#numbers.sequence(1,totalPages)}"><a
+						class="page-link" th:href="${p} - 1"><span th:text="${p}"></span></a></li>
+					<li class="page-item" th:if="${currentPage + 1 != totalPages}"><a
+						class="page-link" th:href="${currentPage} + 1">Next</a></li>
+				</ul>
+			</nav>
+			</div>
+			
+		</div>
 
 
-</div>
+	</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script>
   function logout()
   {
       location.href = "./signin.html";
@@ -156,5 +123,5 @@
 </script>
 
 
-  </body>
+</body>
 </html>

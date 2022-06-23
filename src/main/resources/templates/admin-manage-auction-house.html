@@ -80,71 +80,31 @@
 
      <div class="auction-gallery">
           
-        <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
+        <div id="auction-content" th:each="u : ${users}">
+            <img th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}" alt="" id="auction-house-pic">
+            <h3 id="auction-house-name" th:text="${u.name}"></h3>
+            <h6>Street : <span th:text="${u.street}"></span></h6>
+            <h6>City : <span th:text="${u.city}"></span></h6>
+            <h6>State : <span th:text="${u.state}"></span></h6>
+            <h6>Country : <span th:text="${u.country}"></span></h6>
+            <h6>Pincode : <span th:text="${u.pincode}"></span></h6>	
+            <h6 id="auction-house-email" th:text="${u.email}"></h6>
+            <h6 id="auction-house-phno" th:text="${u.phoneNo}"></h6>
             <button id="suspend-auction-house">Suspend</button>
             <button id="delete-auction-house">Delete</button>
         </div>
-            <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-           <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-           <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-           <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-           <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-           <div id="auction-content">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="auction-house-pic">
-            <h3 id="auction-house-name">Lorem ipsum.</h3>
-            <p id="auction-house-address">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="auction-house-email">Lorem ipsum dolor sit amet.</h6>
-            <h6 id="auction-house-phno">123456789</h6>
-            <button id="suspend-auction-house">Suspend</button>
-            <button id="delete-auction-house">Delete</button>
-        </div>
-        
-        
+        <nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
+						class="page-link" th:href="${currentPage} - 1">Previous</a></li>
+					<li class="page-item"
+						th:classappend="${currentPage==p-1?'active':''}"
+						th:each="p : ${#numbers.sequence(1,totalPages)}"><a
+						class="page-link" th:href="${p} - 1"><span th:text="${p}"></span></a></li>
+					<li class="page-item" th:if="${currentPage + 1 != totalPages}"><a
+						class="page-link" th:href="${currentPage} + 1">Next</a></li>
+				</ul>
+			</nav>
         </div>
       </div>
 
