@@ -102,7 +102,7 @@
 
 			<div class="gallery">
 
-				<div id="content" th:each="a : ${auctions}" onclick="productopen()" >
+				<div id="content" th:each="a : ${auctions}" th:onclick="|productopen(${a.auctionId})|" >
 					<img th:src="@{'/images/' + ${a.item.images[0].url} }"
 						alt="" id="item-pics">
 					<h3 id="itemname" th:text="${a.item.name}">Lorem ipsum.</h3>
@@ -151,15 +151,15 @@
 
 			<div class="upcoming-gallery">
 
-				<div id="upcoming-content" onclick="upcomingproductopen()">
-					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+				<div id="upcoming-content" th:onclick="|upcomingproductopen(${i.itemId})|" th:each="i : ${items}">
+					<img th:src="@{'/images/' + ${i.images[0].url}}"
 						alt="" id="item-pics">
-					<h3 id="upcoming-itemname">Lorem ipsum.</h3>
-					<h5 id="upcoming-auchouse">Lorem ipsum.</h5>
-					<p id="upcoming-itemdesc">Lorem ipsum dolor sit, amet
+					<h3 id="upcoming-itemname" th:text="${i.name}">Lorem ipsum.</h3>
+					<h5 id="upcoming-auchouse" th:text="${i.user.name}" >Lorem ipsum.</h5>
+					<p id="upcoming-itemdesc" th:text="${i.description}" >Lorem ipsum dolor sit, amet
 						consectetur adipisicing elit. Nihil doloremque tempora labore quam
 						dolore veniam?</p>
-					<h6 id="base-price">Base price : &#8377;10000</h6>
+					<h6 id="base-price">Base price : &#8377;<span th:text="${i.basePrice}"></span></h6>
 				</div>
 
 
@@ -202,12 +202,12 @@
       location.href = "/sign-in";
   } 
 
-  function productopen(){
-    location.href="./product-bid.html"
+  function productopen(s){
+    location.href="/product/" + s
   }
 
-  function upcomingproductopen(){
-    location.href = "./upcoming-bids.html"
+  function upcomingproductopen(s){
+    location.href = "upcomming/" + s
   }
   
   function profile(){

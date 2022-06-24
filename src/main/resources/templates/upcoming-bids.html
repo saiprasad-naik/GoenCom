@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./product-bid.css" class="css">
+    <link rel="stylesheet" th:href="@{/css/product-bid.css}" class="css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,200&display=swap"
         rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="./user-bidder-items-list.css">
+    <!-- <link rel="stylesheet" th:href="@{/css/user-bidder-items-list.css}"> -->
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
 
@@ -72,14 +72,14 @@
     <!-- Navbar ends here -->
 
     <div class="content">
-         <h2 id="item-name">Lorem, ipsum.</h2>
+         <h2 id="item-name" th:text="${item.name}">Lorem, ipsum.</h2>
         <div class="pics">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">    
+            <img th:src="@{'/images/' + ${item.images[0].url}}" alt="" id="item-pics">    
         </div>
         <div class="info">
-           <h4>Auction House: <span id="auction-house-name">Lorem, ipsum dolor.</span></h4>
-            <p>About Item: <span id="item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa vitae voluptate est cupiditate, quas, nam eum dignissimos rerum quisquam neque delectus voluptatem. Reprehenderit, et. Hic, dolore delectus. Dolor, voluptatibus alias.</span></p>
-            <h5>Base Price: <span id="base-price">2300</span> </h5>
+           <h4>Auction House: <span id="auction-house-name" th:text="${item.user.name}" >Lorem, ipsum dolor.</span></h4>
+            <p>About Item: <span id="item-desc" th:text="${item.description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa vitae voluptate est cupiditate, quas, nam eum dignissimos rerum quisquam neque delectus voluptatem. Reprehenderit, et. Hic, dolore delectus. Dolor, voluptatibus alias.</span></p>
+            <h5>Base Price: <span id="base-price" th:text="${item.basePrice}">2300</span> </h5>
         </div>
         <div class="bid">
             <button id="add-to-interest-list">Add To Interest List</button>
