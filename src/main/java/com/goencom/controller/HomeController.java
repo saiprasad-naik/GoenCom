@@ -1,5 +1,7 @@
 package com.goencom.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,13 @@ public class HomeController {
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(Principal principal, Model model) {
+		if(principal == null) {
+			model.addAttribute("user", new User());
+		}else {
+			User user = userRepository.getUserByEmail(principal.getName());
+			model.addAttribute("user", user);
+		}
 		return "index";
 	}
 	

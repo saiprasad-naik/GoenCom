@@ -78,18 +78,30 @@
 
      <div class="items-gallery">
           
-        <div id="items-content" th:each="c : ${items}">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="item-name" th:text="${c.name}"></h3>
-            <p id="item-desc" th:text="${c.description}"></p>
-            <h3 id="auction-house-name" th:text="${c.user.name}"></h3>
-            <h6 id="auction-house-phno" th:text="${c.basePrice}"></h6>
+        <div id="items-content" th:each="i : ${items}">
+            <img th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}" alt="" id="item-pics">
+            <h3 id="item-name" th:text="${i.name}"></h3>
+            <p id="item-desc" th:text="${i.description}"></p>
+            <h3 id="auction-house-name" th:text="${i.user.name}">Lorem ipsum.</h3>
+            <h6 id="auction-house-phno" th:text="${i.user.phoneNo}">123456789</h6>
             <button id="suspend-item">Suspend</button>
             <button id="delete-item">Delete</button>
         </div>
              
         
         </div>
+        <nav aria-label="Page navigation example">
+				<ul class="pagination">
+					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
+						class="page-link" th:href="${currentPage} - 1">Previous</a></li>
+					<li class="page-item"
+						th:classappend="${currentPage==p-1?'active':''}"
+						th:each="p : ${#numbers.sequence(1,totalPages)}"><a
+						class="page-link" th:href="${p} - 1"><span th:text="${p}"></span></a></li>
+					<li class="page-item" th:if="${currentPage + 1 != totalPages}"><a
+						class="page-link" th:href="${currentPage} + 1">Next</a></li>
+				</ul>
+			</nav>
       </div>
 
 

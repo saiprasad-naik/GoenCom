@@ -1,191 +1,235 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" th:href="@{/css/index.css}">
+<link rel="stylesheet" th:href="@{/css/index.css}">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
-  <title>Goencom</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
+<title>Goencom</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
 </style>
-  </head>
-  <body>
-    <!-- Navbar starts here -->
-    <section>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-            <a href="/" class="navbar-brand mb-0 h1 pr-5">
-                GoenCom.
-            </a> <i class="fa-solid fa-cutlery"></i>
+</head>
+<body>
+	<!-- Navbar starts here -->
+	<section>
+		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+			<div class="container">
+				<a href="/" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+					class="fa-solid fa-cutlery"></i>
 
-            <button type="button"    data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-
-           
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a href="./index.html" class="nav-link active">Home</a>
-                </li>
-
-                 <li class="nav-item ">
-              <a href="#about" class="nav-link">About</a>
-            </li>
-
-              <li class="nav-item ">
-              <a href="#footer" class="nav-link">Contact</a>
-            </li>
-
-                 <li class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">Bids</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li>
-                            <a href="#outergallery" class="dropdown-item">Live Bids</a>
-                        </li>
-                        <li>
-                            <a href="#upcoming-outergallery" class="dropdown-item">Upcoming Bids</a>
-                        </li>
-
-                    </ul>
-                </li>
-                
-               <button type="button" class="btn btn-outline-light" onclick="signin()">Sign in</button>             
-            </ul>
-            </div>
-         </div>
-        </nav>
-    </section>
-    <!-- Navbar ends here -->
-
-<div class="main">
-  
-  <section class="landing">
-  <div class="header-text">
-      <p>You <span>buy</span> , You <span>sell</span> <br> We <span>manage</span> </p>
-      <a href="./auction-house.html">Auction House</a>
-      <a href="./admin-dashboard.html">Admin dashboard</a>
-      <a href="./user-bidded-items-list.html" class="nav-link">Bidded items</a>
-      <a href="./product-bid.html">product bid</a>
-
-    </div>
-  </section>
-
-  <div id="outergallery">
-    <h2 class="live-bid-heading">Live Bids</h2>
-
-     <div class="gallery">
-          
-        <div id="content" onclick="productopen()">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="itemname">Lorem ipsum.</h3>
-            <h5 id="auchouse">Lorem ipsum.</h5>
-            <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-        </div>
-        <div id="content" onclick="productopen()">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="itemname">Lorem ipsum.</h3>
-            <h5 id="auchouse">Lorem ipsum.</h5>
-            <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-        </div>
-        <div id="content" onclick="productopen()">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="itemname">Lorem ipsum.</h3>
-            <h5 id="auchouse">Lorem ipsum.</h5>
-            <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-        </div>
-        <div id="content" onclick="productopen()">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="itemname">Lorem ipsum.</h3>
-            <h5 id="auchouse">Lorem ipsum.</h5>
-            <p id="itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-        </div>
-        
+				<button type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" class="navbar-toggler"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="toggle">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
 
 
-    </div>
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item active"><a href="./index.html"
+							class="nav-link active">Home</a></li>
 
-  </div>
-     
+						<li class="nav-item "><a href="#about" class="nav-link">About</a>
+						</li>
 
-<section class="body2">
-  <section class="about" id="about">
-    <h2 class="about-heading">About Us</h2><br>
-    <div class="inner-about">
-    <img src="./images/—Pngtree—confused red anxious person thinking_6707778.png" alt="">
-    <p>Using our online auction management system, bidders will be able to connect to the specific seller who will offer them necessary information or give hand to sell their items to them. This will help save time and offer quality deliverables to the bidders by quick response and attention services. Our system will replace manual way of seeking items in the market and travelling long journeys just to get an item yet there are available items just in the neighbourhood. 
-    The scope of this website is to build a user friendly auctioning, where user will be able to bid any product which is available nearby. By using Online Auction management system it will be easy for auctioneer to make an auction and time saving also. By making auction through this website will help to reach maximum of buyers bidding in local area. 
-</p>
+						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						</li>
 
-    </div>
+						<li class="nav-item dropdown"><a href="#"
+							class="nav-link dropdown-toggle" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">Bids</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a href="#outergallery" class="dropdown-item">Live
+										Bids</a></li>
+								<li><a href="#upcoming-outergallery" class="dropdown-item">Upcoming
+										Bids</a></li>
 
-  </section>
-</section>
+							</ul></li>
+						<div th:switch="${user.role}">
+							<button th:case="'ROLE_USER'" type="button"
+								class="btn btn-outline-light" onclick="profile()">Profie</button>
+							<button th:case="'ROLE_AUCTIONEER'" type="button"
+								class="btn btn-outline-light" onclick="auctionHouseDashboard()">Auction
+								House Dashboard</button>
+							<button th:case="'ROLE_ADMIN'" type="button"
+								class="btn btn-outline-light" onclick="adminDashboard()">Admin
+								Dashboard</button>
+							<button th:case="*" type="button" class="btn btn-outline-light"
+								onclick="signin()">Sign In</button>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<!-- Navbar ends here -->
 
-<div id="upcoming-outergallery">
-    <h2 class="live-bid-heading">Upcoming Bids</h2>
+	<div class="main">
 
-     <div class="upcoming-gallery">
-          
-        <div id="upcoming-content" onclick="upcomingproductopen()">
-            <img src="./images/—Pngtree—a shoe store sells shoes_7256461.png" alt="" id="item-pics">
-            <h3 id="upcoming-itemname">Lorem ipsum.</h3>
-            <h5 id="upcoming-auchouse">Lorem ipsum.</h5>
-            <p id="upcoming-itemdesc">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil doloremque tempora labore quam dolore veniam?</p>
-            <h6 id="base-price">Base price : &#8377;10000</h6>
-        </div>
-         
-        
-        </div>
-      </div>
- </div>
+		<section class="landing">
+			<div class="header-text">
+				<p>
+					You <span>buy</span> , You <span>sell</span> <br> We <span>manage</span>
+				</p>
+				<a href="./auction-house.html">Auction House</a> <a
+					href="./admin-dashboard.html">Admin dashboard</a> <a
+					href="./user-bidded-items-list.html" class="nav-link">Bidded
+					items</a> <a href="./product-bid.html">product bid</a>
 
-    
- <div id="footer">
-    <div class="footer">
-        <h3>GoenCom.com</h3>
-        <p>All rights reserved</p>
-         <h4>Contact Us</h4>
-        <div class="half3">
-          <p>GoenCom</p>
-          <p>Goa, India</p>
-          <a href="tel:+919922928253">Call: 9988234518</a>
-          <a href = "mailto: goencombusiness@gmail.com">Send Email: goencombusiness@gmail.com</a>
-          <a href="./about-us.html">About GoenCom</a>
-      </div>
-      <div class="socials">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      </div>
- </div>     
- 
+			</div>
+		</section>
+
+		<div id="outergallery">
+			<h2 class="live-bid-heading">Live Bids</h2>
+
+			<div class="gallery">
+
+				<div id="content" onclick="productopen()">
+					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+						alt="" id="item-pics">
+					<h3 id="itemname">Lorem ipsum.</h3>
+					<h5 id="auchouse">Lorem ipsum.</h5>
+					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
+						adipisicing elit. Nihil doloremque tempora labore quam dolore
+						veniam?</p>
+					<h6 id="base-price">Base price : &#8377;10000</h6>
+				</div>
+				<div id="content" onclick="productopen()">
+					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+						alt="" id="item-pics">
+					<h3 id="itemname">Lorem ipsum.</h3>
+					<h5 id="auchouse">Lorem ipsum.</h5>
+					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
+						adipisicing elit. Nihil doloremque tempora labore quam dolore
+						veniam?</p>
+					<h6 id="base-price">Base price : &#8377;10000</h6>
+				</div>
+				<div id="content" onclick="productopen()">
+					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+						alt="" id="item-pics">
+					<h3 id="itemname">Lorem ipsum.</h3>
+					<h5 id="auchouse">Lorem ipsum.</h5>
+					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
+						adipisicing elit. Nihil doloremque tempora labore quam dolore
+						veniam?</p>
+					<h6 id="base-price">Base price : &#8377;10000</h6>
+				</div>
+				<div id="content" onclick="productopen()">
+					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+						alt="" id="item-pics">
+					<h3 id="itemname">Lorem ipsum.</h3>
+					<h5 id="auchouse">Lorem ipsum.</h5>
+					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
+						adipisicing elit. Nihil doloremque tempora labore quam dolore
+						veniam?</p>
+					<h6 id="base-price">Base price : &#8377;10000</h6>
+				</div>
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
- <script>
+
+			</div>
+
+		</div>
+
+
+		<section class="body2">
+			<section class="about" id="about">
+				<h2 class="about-heading">About Us</h2>
+				<br>
+				<div class="inner-about">
+					<img
+						src="./images/—Pngtree—confused red anxious person thinking_6707778.png"
+						alt="">
+					<p>Using our online auction management system, bidders will be
+						able to connect to the specific seller who will offer them
+						necessary information or give hand to sell their items to them.
+						This will help save time and offer quality deliverables to the
+						bidders by quick response and attention services. Our system will
+						replace manual way of seeking items in the market and travelling
+						long journeys just to get an item yet there are available items
+						just in the neighbourhood. The scope of this website is to build a
+						user friendly auctioning, where user will be able to bid any
+						product which is available nearby. By using Online Auction
+						management system it will be easy for auctioneer to make an
+						auction and time saving also. By making auction through this
+						website will help to reach maximum of buyers bidding in local
+						area.</p>
+
+				</div>
+
+			</section>
+		</section>
+
+		<div id="upcoming-outergallery">
+			<h2 class="live-bid-heading">Upcoming Bids</h2>
+
+			<div class="upcoming-gallery">
+
+				<div id="upcoming-content" onclick="upcomingproductopen()">
+					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+						alt="" id="item-pics">
+					<h3 id="upcoming-itemname">Lorem ipsum.</h3>
+					<h5 id="upcoming-auchouse">Lorem ipsum.</h5>
+					<p id="upcoming-itemdesc">Lorem ipsum dolor sit, amet
+						consectetur adipisicing elit. Nihil doloremque tempora labore quam
+						dolore veniam?</p>
+					<h6 id="base-price">Base price : &#8377;10000</h6>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+
+
+	<div id="footer">
+		<div class="footer">
+			<h3>GoenCom.com</h3>
+			<p>All rights reserved</p>
+			<h4>Contact Us</h4>
+			<div class="half3">
+				<p>GoenCom</p>
+				<p>Goa, India</p>
+				<a href="tel:+919922928253">Call: 9988234518</a> <a
+					href="mailto: goencombusiness@gmail.com">Send Email:
+					goencombusiness@gmail.com</a> <a href="./about-us.html">About
+					GoenCom</a>
+			</div>
+			<div class="socials">
+				<i class="fa-brands fa-twitter"></i> <i
+					class="fa-brands fa-facebook"></i> <i
+					class="fa-brands fa-instagram"></i>
+			</div>
+		</div>
+	</div>
+
+
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+	<script>
   function signin()
   {
       location.href = "/sign-in";
@@ -198,8 +242,20 @@
   function upcomingproductopen(){
     location.href = "./upcoming-bids.html"
   }
+  
+  function profile(){
+  	location.href = "user/profile"
+  }
+  
+  function auctionHouseDashboard(){
+  	location.href = "auction-house/"
+  }
+  
+  function adminDashboard(){
+  	location.href = "admin/"
+  }
 </script>
 
 
-  </body>
+</body>
 </html>

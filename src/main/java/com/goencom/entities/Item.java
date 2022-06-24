@@ -20,7 +20,7 @@ public class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int itemId;
 	private String name;
-	private String Description;
+	private String description;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Auction auction;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -55,11 +55,11 @@ public class Item {
 	}
 
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 
 	public Auction getAuction() {
