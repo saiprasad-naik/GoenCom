@@ -73,12 +73,11 @@ public class AuctionHouseController {
 	}
 
 	@RequestMapping(path = "/add-item", method = RequestMethod.POST)
-	public String addItem(@ModelAttribute("item") Item item, @RequestParam("image") MultipartFile file,
+	public String addItem(@ModelAttribute("item") Item item, @RequestParam("image") MultipartFile file, @RequestParam(value = "visible", required = false) String visible,
 			Principal principal, HttpSession session, Model model) {
 		try {
 			User user = userRepository.getUserByEmail(principal.getName());
 			if (file.isEmpty()) {
-				System.out.println("file is empty");
 				Image image = new Image();
 				image.setUrl("—Pngtree—a shoe store sells shoes_7256461.png");
 				image.setItem(item);
@@ -92,9 +91,15 @@ public class AuctionHouseController {
 				Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			}
+			System.out.println(visible);
 			item.setEnabled(true);
 			item.setAuctioned(false);
 			item.setDeleted(false);
+			if (visible != null) {
+				item.setVisible(true);
+			}else {
+				item.setVisible(false);
+			}
 			item.setUser(user);
 			user.getItems().add(item);
 			userRepository.save(user);

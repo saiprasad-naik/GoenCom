@@ -30,7 +30,7 @@ public class Item {
 	private int basePrice;
 	private Boolean enabled;
 	private Boolean deleted;
-	private Boolean Visible;
+	private Boolean visible;
 	private Boolean auctioned;
 
 	public Item() {
@@ -95,11 +95,11 @@ public class Item {
 	}
 
 	public Boolean getVisible() {
-		return Visible;
+		return visible;
 	}
 
 	public void setVisible(Boolean visible) {
-		Visible = visible;
+		this.visible = visible;
 	}
 
 	public int getBasePrice() {

@@ -102,49 +102,16 @@
 
 			<div class="gallery">
 
-				<div id="content" onclick="productopen()">
-					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
+				<div id="content" th:each="a : ${auctions}" onclick="productopen()" >
+					<img th:src="@{'/images/' + ${a.item.images[0].url} }"
 						alt="" id="item-pics">
-					<h3 id="itemname">Lorem ipsum.</h3>
-					<h5 id="auchouse">Lorem ipsum.</h5>
-					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
+					<h3 id="itemname" th:text="${a.item.name}">Lorem ipsum.</h3>
+					<h5 id="auchouse" th:text="${a.user.name}">Lorem ipsum.</h5>
+					<p id="itemdesc" th:text="${a.item.description}">Lorem ipsum dolor sit, amet consectetur
 						adipisicing elit. Nihil doloremque tempora labore quam dolore
 						veniam?</p>
-					<h6 id="base-price">Base price : &#8377;10000</h6>
+					<h6 id="base-price" >Base price : &#8377;<span th:text="${a.item.basePrice}"></span></h6>
 				</div>
-				<div id="content" onclick="productopen()">
-					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
-						alt="" id="item-pics">
-					<h3 id="itemname">Lorem ipsum.</h3>
-					<h5 id="auchouse">Lorem ipsum.</h5>
-					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Nihil doloremque tempora labore quam dolore
-						veniam?</p>
-					<h6 id="base-price">Base price : &#8377;10000</h6>
-				</div>
-				<div id="content" onclick="productopen()">
-					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
-						alt="" id="item-pics">
-					<h3 id="itemname">Lorem ipsum.</h3>
-					<h5 id="auchouse">Lorem ipsum.</h5>
-					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Nihil doloremque tempora labore quam dolore
-						veniam?</p>
-					<h6 id="base-price">Base price : &#8377;10000</h6>
-				</div>
-				<div id="content" onclick="productopen()">
-					<img src="./images/—Pngtree—a shoe store sells shoes_7256461.png"
-						alt="" id="item-pics">
-					<h3 id="itemname">Lorem ipsum.</h3>
-					<h5 id="auchouse">Lorem ipsum.</h5>
-					<p id="itemdesc">Lorem ipsum dolor sit, amet consectetur
-						adipisicing elit. Nihil doloremque tempora labore quam dolore
-						veniam?</p>
-					<h6 id="base-price">Base price : &#8377;10000</h6>
-				</div>
-
-
-
 
 			</div>
 

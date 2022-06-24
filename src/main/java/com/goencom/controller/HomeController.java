@@ -1,10 +1,14 @@
 package com.goencom.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +16,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.goencom.dao.AuctionRepository;
+import com.goencom.dao.ItemRepository;
 import com.goencom.dao.UserRepository;
+import com.goencom.entities.Auction;
+import com.goencom.entities.Item;
 import com.goencom.entities.User;
 import com.goencom.helper.Message;
 
@@ -21,10 +29,14 @@ public class HomeController {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
+	private AuctionRepository auctionRepository;
+	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String home(Principal principal, Model model) {
+		List<Auction> auctions = auctionRepository.findAllActiveAuction();
+		model.addAttribute("auctions", auctions);
 		if(principal == null) {
 			model.addAttribute("user", new User());
 		}else {
