@@ -6,6 +6,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -15,7 +18,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.query.Param;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,13 +31,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.goencom.dao.AuctionRepository;
+import com.goencom.dao.BidRepository;
 import com.goencom.dao.ItemRepository;
+import com.goencom.dao.ResultRepository;
 import com.goencom.dao.UserRepository;
 import com.goencom.entities.Auction;
+import com.goencom.entities.Bid;
 import com.goencom.entities.Image;
 import com.goencom.entities.Item;
+import com.goencom.entities.Result;
 import com.goencom.entities.User;
-import com.goencom.helper.Message;
+import com.goencom.helper.*;
 
 @Controller
 @RequestMapping("/auction-house")
@@ -44,10 +51,22 @@ public class AuctionHouseController {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private AuctionRepository auctionRepository;
 
+	/*
+	 * @Autowired private ThreadPoolTaskScheduler threadPoolTaskScheduler;
+	 */
+	@Autowired
+	private BidRepository bidRepository;
+
+	@Autowired
+	private ResultRepository resultRepository;
+
+	/*
+	 * @Autowired private AuctionResultTask auctionResultTask;
+	 */
 	@RequestMapping("/")
 	public String home(Model model, Principal principal) {
 		User user = userRepository.getUserByEmail(principal.getName());
@@ -73,8 +92,9 @@ public class AuctionHouseController {
 	}
 
 	@RequestMapping(path = "/add-item", method = RequestMethod.POST)
-	public String addItem(@ModelAttribute("item") Item item, @RequestParam("image") MultipartFile file, @RequestParam(value = "visible", required = false) String visible,
-			Principal principal, HttpSession session, Model model) {
+	public String addItem(@ModelAttribute("item") Item item, @RequestParam("image") MultipartFile file,
+			@RequestParam(value = "visible", required = false) String visible, Principal principal, HttpSession session,
+			Model model) {
 		try {
 			User user = userRepository.getUserByEmail(principal.getName());
 			if (file.isEmpty()) {
@@ -97,7 +117,7 @@ public class AuctionHouseController {
 			item.setDeleted(false);
 			if (visible != null) {
 				item.setVisible(true);
-			}else {
+			} else {
 				item.setVisible(false);
 			}
 			item.setUser(user);
@@ -156,11 +176,10 @@ public class AuctionHouseController {
 		model.addAttribute("totalPages", items.getTotalPages());
 		return "item-list-auction-house";
 	}
-	
+
 	@GetMapping("/{itemId}/addToAuction")
 	public String addToAuction(@PathVariable("itemId") Integer itemId, Principal principal) {
 		try {
-			System.out.println(itemId);
 			Optional<Item> optionItem = this.itemRepository.findById(itemId);
 			User user = this.userRepository.getUserByEmail(principal.getName());
 			Item item = optionItem.get();
@@ -173,10 +192,80 @@ public class AuctionHouseController {
 			auction.setUser(user);
 			auction.setStatus(Auction.RUNNING);
 			auctionRepository.save(auction);
+			auction = auctionRepository.findAuctionByItemId(itemId);
+			/*
+			 * auctionResultTask.setAuctionId(auction.getAuctionId());
+			 * threadPoolTaskScheduler.schedule(auctionResultTask, new
+			 * Date(System.currentTimeMillis() + 60000));
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return "redirect:/auction-house/new-auction/0";
+	}
+
+	@GetMapping("/generate/{auctionId}")
+	public String generateResults(@PathVariable("auctionId") Integer auctionId) {
+		List<Bid> bids = bidRepository.findBidsbyAuctionId(auctionId);
+		List<Bid> candidates = highestBids(bids);
+		Bid bid = bids.get(0);
+		if (candidates.size() != 1) {
+			bid = lowestBidId(candidates);
+		}
+		System.out.println(bid.getBidId());
+		bid.getAuction().setStatus(Auction.FINNISHED);
+		bid.setStatus(Bid.WON_STATUS);
+		Result result = new Result();
+		bid.setResult(result);
+		result.setBid(bid);
+		resultRepository.save(result);
+		if (bids.size() != 1) {
+			bids = exceptHighestBid(bids, bid);
+			bidRepository.saveAll(bids);
+		}
+		return "redirect:/auction-house/manage-auction/0";
+	}
+
+	private List<Bid> highestBids(List<Bid> bids) {
+		int max = 0;
+		for (int i = 0; i < bids.size(); i++) {
+			System.out.println(bids.get(i).getBidId());
+			if (bids.get(i).getAmount() > max) {
+				max = bids.get(i).getAmount();
+			}
+		}
+		List<Bid> results = new ArrayList<>();
+		for (int i = 0; i < bids.size(); i++) {
+			if (bids.get(i).getAmount() == max) {
+				results.add(bids.get(i));
+			}
+		}
+		return results;
+	}
+
+	private Bid lowestBidId(List<Bid> bids) {
+		Bid min = bids.get(0);
+
+		for (int i = 0; i < bids.size(); i++) {
+			if (bids.get(i).getBidId() < min.getBidId()) {
+				min = bids.get(i);
+			}
+		}
+
+		return min;
+	}
+
+	private List<Bid> exceptHighestBid(List<Bid> bids, Bid bid) {
+		int id = 0;
+		for (int i = 0; i < bids.size(); i++) {
+			if (bid.getBidId() == bids.get(i).getBidId()) {
+				id = i;
+				continue;
+			}
+			bids.get(i).setStatus(Bid.LOST_STATUS);
+		}
+		bids.remove(id);
+		return bids;
 	}
 }

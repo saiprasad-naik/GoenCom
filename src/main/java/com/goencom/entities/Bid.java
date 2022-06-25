@@ -6,8 +6,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "bid")
@@ -19,12 +23,14 @@ public class Bid {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int bidId;
-	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Auction Auction;
 	private int amount;
 	private String status;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private User user;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Result result;
 
 	public Bid() {
 		super();
@@ -69,6 +75,14 @@ public class Bid {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public Result getResult() {
+		return result;
+	}
+
+	public void setResult(Result result) {
+		this.result = result;
 	}
 
 }

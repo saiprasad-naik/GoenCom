@@ -72,21 +72,21 @@
 
     <div class="main">
       <div class="user-card">
-        <img src="./images/avatar-flat-icon-on-black-background-black-style-vector-25959438-removebg-preview.png" alt="">
-        <h1 id="user-name">Saiprasad Naik</h1>
+        <img src="/images/avatar-flat-icon-on-black-background-black-style-vector-25959438-removebg-preview.png" alt="">
+        <h1 id="user-name"><span th:text="${user.fName}"></span> <span th:text="${user.lName}"></span></h1>
 
         <div class="user-details">
          
           <div class="half1">
-            <p>Address: <span id="user-address">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reiciendis, reprehenderit?</span>
+            <p>Address: <span id="user-address"><span th:text="${user.street}" ></span>, <span th:text="${user.city}" ></span>, <span th:text="${user.state}" ></span>, <span th:text="${user.country}" ></span>, <span th:text="${user.pincode}" ></span></span>
             </p>
-            <p>Phone Number: <span id="user-phno">123456789</span></p>
-            <p >Email ID: <span id="user-email">Lorem ipsum dolor sit amet.</span></p>
+            <p>Phone Number: <span id="user-phno" th:text="${user.phoneNo}">123456789</span></p>
+            <p >Email ID: <span id="user-email" th:text="${user.email}">Lorem ipsum dolor sit amet.</span></p>
           </div>
           
           <div class="half2">
-            <a href="./user-bidded-items-list.html" id="user-bidded-items">Bidded Items</a>
-            <a href="./user-bidding-history.html" id="user-bidding-history">Bidding History</a>
+            <a href="bidded-items/0" id="user-bidded-items">Bidded Items</a>
+            <a href="bid-history/0" id="user-bidding-history">Bidding History</a>
             <a href="./user-interest-list.html" id="user-interest-list">Interest List</a>
           </div>
 

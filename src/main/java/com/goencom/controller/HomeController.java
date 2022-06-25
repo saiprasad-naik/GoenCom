@@ -7,9 +7,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +23,7 @@ import com.goencom.dao.UserRepository;
 import com.goencom.entities.Auction;
 import com.goencom.entities.Bid;
 import com.goencom.entities.Item;
+import com.goencom.entities.Result;
 import com.goencom.entities.User;
 import com.goencom.helper.Message;
 
