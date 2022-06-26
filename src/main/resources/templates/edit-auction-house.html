@@ -26,15 +26,20 @@
 				<span th:text="${session.message.content}"></span>
 				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
-
+			<input type="hidden" name="userId" th:value="${user.userId}">
 			<input type="name" id="auction-house-name" name="name"
 				placeholder="Auction House name" maxlength="50" required
 				th:value="${user.name}" /> <input type="email"
 				id="auction-house-email" name="email"
-				placeholder="Auction House email" maxlength="50" required
-				th:value="${user.email}" /> <input type="tel"
-				id="auction-house-phno" name="phoneNo"
-				placeholder="Auction House Phone Number" th:value="${user.phoneNo}">
+				placeholder="Auction House email" maxlength="50" readonly
+				th:value="${user.email}" /><input type="password" id="password"
+				name="password" placeholder="password" th:value="${user.password}"
+				readonly /> <input type="tel" id="auction-house-phno"
+				name="phoneNo" placeholder="Auction House Phone Number"
+				th:value="${user.phoneNo}">
+			<textarea name="description" id="item-desc" cols="70" rows="10"
+				placeholder="Enter description" th:text="${user.description}"
+				required></textarea>
 			<input type="url" id="auction-house-website" name="website"
 				placeholder="Auction House Website URL" required
 				th:value="${user.website}"> <input type="name" id="street"

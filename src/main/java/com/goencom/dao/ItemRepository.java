@@ -12,7 +12,7 @@ import com.goencom.entities.Item;
 
 public interface ItemRepository extends JpaRepository<Item, Integer>{
 	
-	@Query("from Item as i where i.user.userId =:userId ")
+	@Query("from Item as i where i.user.userId =:userId and i.enabled = true")
 	public Page<Item> findItemsByUser(@Param("userId") int userId, Pageable pageable);
 	
 	@Query("from Item as i where i.user.userId =:userId and i.auctioned = false")

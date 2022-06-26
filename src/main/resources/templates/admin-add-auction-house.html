@@ -38,10 +38,13 @@
 				th:value="${user.phoneNo}" /> <input type="url"
 				id="auction-house-website" name="website"
 				placeholder="Enter Auction House Website URL" required
-				th:value="${user.website}" /> <input type="name" id="street"
-				name="street" placeholder="Enter Street" required
-				th:value="${user.street}" /> <input type="name" id="city"
-				name="city" placeholder="Enter City" required
+				th:value="${user.website}" />
+			<textarea name="description" id="item-desc" cols="70" rows="10"
+				placeholder="Enter description" th:text="${user.description}"
+				required></textarea>
+			<input type="name" id="street" name="street"
+				placeholder="Enter Street" required th:value="${user.street}" /> <input
+				type="name" id="city" name="city" placeholder="Enter City" required
 				th:value="${user.city}" /> <input type="name" id="Enter state"
 				name="state" placeholder="State" required th:value="${user.state}" />
 

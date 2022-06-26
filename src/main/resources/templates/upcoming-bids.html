@@ -2,118 +2,149 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/css/product-bid.css}" class="css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,200&display=swap"
-        rel="stylesheet">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" th:href="@{/css/product-bid.css}" class="css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;1,200&display=swap"
+	rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- <link rel="stylesheet" th:href="@{/css/user-bidder-items-list.css}"> -->
+<!-- <link rel="stylesheet" th:href="@{/css/user-bidder-items-list.css}"> -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/06673b0170.js" crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/06673b0170.js"
+	crossorigin="anonymous"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
+	;
 </style>
-    <title>Product details- GoenCom</title>
+<title>Product details- GoenCom</title>
 </head>
 
 <body>
-    
-    <!-- Navbar starts here -->
-    <section>
-        <nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
-            <div class="container">
-            <a href="./index.html" class="navbar-brand mb-0 h1 pr-5">
-                GoenCom.
-            </a> <i class="fa-solid fa-cutlery"></i>
 
-            <button type="button"    data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            class="navbar-toggler"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a href="./index.html" class="nav-link active">Home</a>
-                </li>
-            
-                <li class="nav-item ">
-              <a href="./user-interest-list.html" class="nav-link">Interest List</a>
-            </li>
-            <li class="nav-item ">
-              <a href="./user-bidded-items-list.html" class="nav-link">Bidded Items</a>
-            </li>
-            <li class="nav-item ">
-              <a href="./user-bidding-history.html" class="nav-link">Bidding History</a>
-            </li>
+	<!-- Navbar starts here -->
+	<section>
+		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+			<div class="container">
+				<a href="./index.html" class="navbar-brand mb-0 h1 pr-5">
+					GoenCom. </a> <i class="fa-solid fa-cutlery"></i>
 
-            <li class="nav-item ">
-              <a href="#footer" class="nav-link">Contact</a>
-            </li>
-               <a href="./user-profile.html"><i class="fa-solid fa-user"> </i></a>
-                    
-            </ul>
-            </div>
-         </div>
-        </nav>
-    </section>
-    <!-- Navbar ends here -->
+				<button type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarNav" class="navbar-toggler"
+					aria-controls="navbarNav" aria-expanded="false" aria-label="toggle">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-    <div class="content">
-         <h2 id="item-name" th:text="${item.name}">Lorem, ipsum.</h2>
-        <div class="pics">
-            <img th:src="@{'/images/' + ${item.images[0].url}}" alt="" id="item-pics">    
-        </div>
-        <div class="info">
-           <h4>Auction House: <span id="auction-house-name" th:text="${item.user.name}" >Lorem, ipsum dolor.</span></h4>
-            <p>About Item: <span id="item-desc" th:text="${item.description}">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa vitae voluptate est cupiditate, quas, nam eum dignissimos rerum quisquam neque delectus voluptatem. Reprehenderit, et. Hic, dolore delectus. Dolor, voluptatibus alias.</span></p>
-            <h5>Base Price: <span id="base-price" th:text="${item.basePrice}">2300</span> </h5>
-        </div>
-        <div class="bid">
-            <button id="add-to-interest-list">Add To Interest List</button>
-        </div>
-        
+				<div class="collapse navbar-collapse" id="navbarNav">
+					<ul class="navbar-nav">
+						<li class="nav-item active"><a href="./index.html"
+							class="nav-link active">Home</a></li>
 
-    </div>
+						<li class="nav-item "><a href="./user-interest-list.html"
+							class="nav-link">Interest List</a></li>
+						<li class="nav-item "><a href="./user-bidded-items-list.html"
+							class="nav-link">Bidded Items</a></li>
+						<li class="nav-item "><a href="./user-bidding-history.html"
+							class="nav-link">Bidding History</a></li>
 
+						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						</li>
+						<a href="./user-profile.html"><i class="fa-solid fa-user">
+						</i></a>
 
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</section>
+	<!-- Navbar ends here -->
 
-
-
-    <div id="footer">
-    <div class="footer">
-        <h3>GoenCom.com</h3>
-        <p>All rights reserved</p>
-         <h4>Contact Us</h4>
-        <div class="half3">
-          <p>GoenCom</p>
-          <p>Goa, India</p>
-          <a href="tel:+919922928253">Call: 9988234518</a>
-          <a href = "mailto: goencombusiness@gmail.com">Send Email: goencombusiness@gmail.com</a>
-          <a href="./about-us.html">About GoenCom</a>
-      </div>
-      <div class="socials">
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook"></i>
-        <i class="fa-brands fa-instagram"></i>
-      </div>
-      </div>
- </div>    
+	<div class="content">
+	<div class="alert alert-primary" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
+			</div>
+		<h2 id="item-name" th:text="${item.name}">Lorem, ipsum.</h2>
+		<div class="pics">
+			<img th:src="@{'/images/' + ${item.images[0].url}}" alt=""
+				id="item-pics">
+		</div>
+		<div class="info">
+			<h4>
+				Auction House: <span id="auction-house-name"
+					th:text="${item.user.name}">Lorem, ipsum dolor.</span>
+			</h4>
+			<p>
+				About Item: <span id="item-desc" th:text="${item.description}">Lorem
+					ipsum dolor sit amet consectetur adipisicing elit. Culpa vitae
+					voluptate est cupiditate, quas, nam eum dignissimos rerum quisquam
+					neque delectus voluptatem. Reprehenderit, et. Hic, dolore delectus.
+					Dolor, voluptatibus alias.</span>
+			</p>
+			<h5>
+				Base Price: <span id="base-price" th:text="${item.basePrice}">2300</span>
+			</h5>
+		</div>
+		<form th:action="@{'/user/add-interested/' + ${item.itemId}} + '/'"
+			method="post">
+			<div class="bid" th:if="${interest == null}">
+				<button id="add-to-interest-list">Add To Interest List</button>
+			</div>
+			<div class="bid" th:unless="${interest == null}">
+				<h6 id="add-to-interest-list">Already added</h6>
+			</div>
+		</form>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+	</div>
+
+
+
+
+
+	<div id="footer">
+		<div class="footer">
+			<h3>GoenCom.com</h3>
+			<p>All rights reserved</p>
+			<h4>Contact Us</h4>
+			<div class="half3">
+				<p>GoenCom</p>
+				<p>Goa, India</p>
+				<a href="tel:+919922928253">Call: 9988234518</a> <a
+					href="mailto: goencombusiness@gmail.com">Send Email:
+					goencombusiness@gmail.com</a> <a href="./about-us.html">About
+					GoenCom</a>
+			</div>
+			<div class="socials">
+				<i class="fa-brands fa-twitter"></i> <i
+					class="fa-brands fa-facebook"></i> <i
+					class="fa-brands fa-instagram"></i>
+			</div>
+		</div>
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -16,7 +16,7 @@ public class Interest {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int interestID;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Auction auction;
+	private Item item;
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private User user;
 
@@ -33,12 +33,12 @@ public class Interest {
 		this.interestID = interestID;
 	}
 
-	public Auction getAuction() {
-		return auction;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setAuction(Auction auction) {
-		this.auction = auction;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	public User getUser() {

@@ -1,16 +1,7 @@
 package com.goencom.helper;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.goencom.dao.AuctionRepository;
-import com.goencom.dao.BidRepository;
-import com.goencom.dao.ResultRepository;
-import com.goencom.entities.Auction;
-import com.goencom.entities.Bid;
-import com.goencom.entities.Result;
 import com.goencom.service.AuctionService;
 
 public class AuctionResultTask implements Runnable {

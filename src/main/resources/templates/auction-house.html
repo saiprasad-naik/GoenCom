@@ -62,14 +62,14 @@
 		</nav>
 	</section>
 	<!-- Navbar ends here -->
-<div class="alert alert-primary" th:if="${session.message}"
-				th:classappend="${session.message.type}" role="alert">
-				<span th:text="${session.message.content}"></span>
-				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
-			</div>
 
 	<div class="main">
 		<div class="auction-house-card">
+		<div class="alert alert-primary" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
 			<h1 id="auction-house-name" th:text="${user.name}"></h1>
 			<img id="auction-house-pic"
 				th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}"
@@ -99,7 +99,8 @@
 				<div class="half2">
 					<a href="manage-items/0" id="user-bidded-items">Manage
 						Items</a> <a href="manage-auction/0" id="user-bidding-history">Manage
-						Auction</a>
+						Auction</a><a href="auction-results/0">Manage
+						Result</a>
 				</div>
 
 			</div>

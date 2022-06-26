@@ -7,7 +7,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +17,6 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.concurrent.ThreadPoolTaskScheduler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -111,7 +109,6 @@ public class AuctionHouseController {
 				Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
 				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 			}
-			System.out.println(visible);
 			item.setEnabled(true);
 			item.setAuctioned(false);
 			item.setDeleted(false);
@@ -185,6 +182,7 @@ public class AuctionHouseController {
 			Item item = optionItem.get();
 			Auction auction = new Auction();
 			item.setAuctioned(true);
+			item.setVisible(false);
 			item.setAuction(auction);
 			auction.setItem(item);
 			auction.setEnable(true);
@@ -214,6 +212,7 @@ public class AuctionHouseController {
 			bid = lowestBidId(candidates);
 		}
 		System.out.println(bid.getBidId());
+		bid.getAuction().getItem().setEnabled(false);
 		bid.getAuction().setStatus(Auction.FINNISHED);
 		bid.setStatus(Bid.WON_STATUS);
 		Result result = new Result();
@@ -267,5 +266,15 @@ public class AuctionHouseController {
 		}
 		bids.remove(id);
 		return bids;
+	}
+	
+	@GetMapping("auction-results/{page}")
+	public String manageResults(@PathVariable("page") Integer page, Model model, Principal principal) {
+		Pageable pageable = PageRequest.of(page, 4);
+		Page<Result> results = resultRepository.findAuctionResultsByAuctionHouse(principal.getName(), pageable);
+		model.addAttribute("results", results);
+		model.addAttribute("currentPage", page);
+		model.addAttribute("totalPages", results.getTotalPages());
+		return "auction-results";
 	}
 }

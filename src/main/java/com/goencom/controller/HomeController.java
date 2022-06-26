@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.goencom.dao.AuctionRepository;
 import com.goencom.dao.BidRepository;
+import com.goencom.dao.InterestRepository;
 import com.goencom.dao.ItemRepository;
 import com.goencom.dao.UserRepository;
 import com.goencom.entities.Auction;
 import com.goencom.entities.Bid;
+import com.goencom.entities.Interest;
 import com.goencom.entities.Item;
-import com.goencom.entities.Result;
 import com.goencom.entities.User;
 import com.goencom.helper.Message;
 
@@ -39,6 +40,8 @@ public class HomeController {
 	private BidRepository bidRepository;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+	@Autowired
+	private InterestRepository interestRepository;
 	
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String home(Principal principal, Model model) {
@@ -90,10 +93,14 @@ public class HomeController {
 	}
 	
 	@GetMapping("/upcomming/{itemId}")
-	public String upcomming(@PathVariable("itemId") Integer itemId,Model model) {
+	public String upcomming(@PathVariable("itemId") Integer itemId,Model model, Principal principal) {
 		Optional<Item> optionalItem = itemRepository.findById(itemId);
 		Item item = optionalItem.get();
 		model.addAttribute("item", item);
+		if(principal != null) {
+			Interest interest = interestRepository.findInterestbyEmailAndItemId(principal.getName(), itemId);
+			model.addAttribute("interest", interest);
+		}
 		return "upcoming-bids";
 	}
 	
