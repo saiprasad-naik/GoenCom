@@ -277,4 +277,15 @@ public class AuctionHouseController {
 		model.addAttribute("totalPages", results.getTotalPages());
 		return "auction-results";
 	}
+	
+	@GetMapping("edit-item/{itemId}")
+	public String editItem(@PathVariable("itemId") Integer itemId, Model model, Principal principal) {
+		User user = userRepository.getUserByEmail(principal.getName());
+		Item item = itemRepository.findById(itemId).get();
+		if(user.getUserId() != item.getUser().getUserId()) {
+			return "redirect:/auction-house/manage-items/0";
+		}
+		model.addAttribute("item", item);
+		return "edit-item";
+	}
 }

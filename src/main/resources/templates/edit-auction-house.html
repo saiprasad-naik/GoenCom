@@ -27,6 +27,7 @@
 				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
 			<input type="hidden" name="userId" th:value="${user.userId}">
+			<input type="hidden" name="role" th:value="${user.role}">
 			<input type="name" id="auction-house-name" name="name"
 				placeholder="Auction House name" maxlength="50" required
 				th:value="${user.name}" /> <input type="email"

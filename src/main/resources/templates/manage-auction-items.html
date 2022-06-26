@@ -86,7 +86,7 @@
 						Base price : &#8377;<span th:text="${i.basePrice}"></span>
 					</h6>
 					<button id="edit-item">
-						<a href="./edit-item.html">Edit</a>
+						<a th:onclick="|edit(${i.itemId})|">Edit</a>
 					</button>
 					<button id="delete-item">Delete</button>
 					<div class="upcoming-list">
@@ -139,6 +139,10 @@
 
   function additem(){
     location.href = "/auction-house/new-item"
+  }
+  
+  function edit(s){
+  	location.href = "/auction-house/edit-item/" + s;
   }
 </script>
 

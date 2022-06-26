@@ -29,6 +29,7 @@
 				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
 			<input type="hidden" name="userId" th:value="${user.userId}">
+			<input type="hidden" name="role" th:value="${user.role}">
 			<input type="name" id="fname" name="fName" placeholder="first name"
 				th:value="${user.fName}" required /> <input type="name" id="lname"
 				name="lName" placeholder="last name" th:value="${user.lName}"
@@ -336,7 +337,9 @@
 			<input type="tel" id="pincode" name="pincode"
 				placeholder="Enter Pincode" th:value="${user.pincode}"> <input
 				type="tel" id="user-phno" name="phoneNo" placeholder="Phone Number"
-				th:value="${user.phoneNo}"><button
+				th:value="${user.phoneNo}">
+				<a href="new-password">change password</a>
+				<button
 					type="submit" class="btn1">Save</button> <a
 				href="profile"><button type="button" class="btn1">Cancel</button></a>
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,8 @@ public class UserController {
 	private InterestRepository interestRepository;
 	@Autowired
 	private ItemRepository itemRepository;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 
 	@RequestMapping(path = "/profile")
 	public String profile(Model model, Principal principal) {
@@ -130,20 +133,20 @@ public class UserController {
 		model.addAttribute("totalPages", interests.getTotalPages());
 		return "user-interest-list";
 	}
-	
+
 	@GetMapping("/fetch-product/{itemId}")
 	public String fetchProduct(@PathVariable("itemId") Integer itemId) {
 		Auction auction = auctionRepository.findAuctionByItemId(itemId);
 		return "redirect:/product/" + auction.getAuctionId();
 	}
-	
+
 	@GetMapping("/edit-user")
 	public String editUser(Model model, Principal principal) {
 		User user = userRepository.getUserByEmail(principal.getName());
 		model.addAttribute("user", user);
 		return "edit-user";
 	}
-	
+
 	@PostMapping("/update-user")
 	public String updateUser(@ModelAttribute("user") User user, HttpSession session, Model model) {
 		try {
@@ -156,5 +159,37 @@ public class UserController {
 			return "edit-user";
 		}
 		return "redirect:profile";
+	}
+
+	@GetMapping("/new-password")
+	public String newPassword() {
+		return "change-password";
+	}
+
+	@PostMapping("/change-password")
+	public String changePassword(Principal principal, @RequestParam("old-password") String oldPassword,
+			@RequestParam("new-password") String newPassword, @RequestParam("new-password2") String newPassword2,
+			HttpSession session) {
+		try {
+			User user = userRepository.getUserByEmail(principal.getName());
+			if (this.passwordEncoder.matches(oldPassword, user.getPassword())) {
+				if (newPassword.equals(newPassword2)) {
+					user.setPassword(passwordEncoder.encode(newPassword));
+					userRepository.save(user);
+				} else {
+					session.setAttribute("message", new Message("password don't match!", "alert-danger"));
+					return "redirect:new-password";
+				}
+
+			} else {
+				session.setAttribute("message", new Message("incorrect password!", "alert-danger"));
+				return "redirect:new-password";
+			}
+			session.setAttribute("message", new Message("successfully updated your password!", "alert-success"));
+		} catch (Exception e) {
+			session.setAttribute("message", new Message("something went wrong!", "alert-danger"));
+			return "redirect:new-password";
+		}
+		return "redirect:edit-user";
 	}
 }
