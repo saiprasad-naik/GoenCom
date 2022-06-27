@@ -13,6 +13,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "user")
@@ -25,6 +28,7 @@ public class User {
 	@Column(length = 20)
 	private String lName;
 	@Column(length = 10)
+	@Size(min = 10, max = 10, message = "Enter 10 digit Number")
 	private String phoneNo;
 	@Column(length = 35)
 	private String street;
@@ -34,9 +38,11 @@ public class User {
 	private String state;
 	@Column(length = 20)
 	private String country;
+	@Min(value = 6, message = "invalid pincode")
 	private int pincode;
 	@Column(unique = true)
 	private String email;
+	@Size(min = 8, max = 16, message = "Enter password between 8 and 16 characters")
 	private String password;
 	private Date dob;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

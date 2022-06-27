@@ -6,11 +6,13 @@ import java.util.Optional;
 import java.util.Random;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -75,13 +77,25 @@ public class HomeController {
 	}
 
 	@RequestMapping(path = "/sign-up", method = RequestMethod.GET)
-	public String sign_up(Model model) {
-		model.addAttribute("user", new User());
+	public String sign_up(Model model, HttpSession session) {
+		String email = (String) session.getAttribute("email");
+		session.removeAttribute("email");
+		if(email.equals(null)) {
+			return "redirect:/new-email";
+		}
+		User user = new User();
+		user.setEmail(email);
+		model.addAttribute("user", user);
 		return "signup";
 	}
 
 	@RequestMapping(path = "/do-register", method = RequestMethod.POST)
-	public String register(@ModelAttribute("user") User user, Model model, HttpSession session) {
+	public String register(@Valid @ModelAttribute("user") User user,BindingResult result,Model model, HttpSession session) {
+		if(result.hasErrors()) {
+			model.addAttribute("user", user);
+			return "signup";
+		}
+		
 		try {
 			user.setEnabled(true);
 			user.setRole("ROLE_USER");
@@ -178,5 +192,46 @@ public class HomeController {
 			return "new-password";
 		}
 		return "redirect:/sign-in";
+	}
+	
+	@GetMapping("/new-email")
+	public String newEmail() {
+		return "new-email";
+	}
+	
+	@PostMapping("/email-otp")
+	public String emailOtp(@RequestParam("email") String email, HttpSession session) {
+		User user = userRepository.getUserByEmail(email);
+		if (user == null) {
+			Random random = new Random();
+			int otp = random.nextInt(99999);
+			String subject = "GoenCom OTP";
+			String message = "your otp is : " + otp;
+			boolean result = this.emailService.sendEmail(subject, message, email);
+			if (result) {
+				session.setAttribute("message", new Message("otp sent!!!", "alert-success"));
+				session.setAttribute("otp", otp);
+				session.setAttribute("email", email);
+			} else {
+				session.setAttribute("message", new Message("otp not sent!!!", "alert-danger"));
+				return "redirect:/new-email";
+			}
+		} else {
+			session.setAttribute("message", new Message("otp not sent!!!", "alert-danger"));
+			return "redirect:/new-email";
+		}
+		return "email-otp";
+	}
+	
+	@PostMapping("/confirm-email")
+	public String confirmEmail(@RequestParam("otp") Integer userOtp, HttpSession session){
+		int otp = (int) session.getAttribute("otp");
+		session.removeAttribute("otp");
+		if (userOtp != otp) {
+			session.setAttribute("message", new Message("invalid otp!!!", "alert-danger"));
+			session.removeAttribute("email");
+			return "redirect:/new-email";
+		}
+		return "redirect:/sign-up";
 	}
 }

@@ -207,7 +207,7 @@ public class AuctionHouseController {
 	public String generateResults(@PathVariable("auctionId") Integer auctionId) {
 		List<Bid> bids = bidRepository.findBidsbyAuctionId(auctionId);
 		List<Bid> candidates = highestBids(bids);
-		Bid bid = bids.get(0);
+		Bid bid =candidates.get(0);
 		if (candidates.size() != 1) {
 			bid = lowestBidId(candidates);
 		}
@@ -287,5 +287,22 @@ public class AuctionHouseController {
 		}
 		model.addAttribute("item", item);
 		return "edit-item";
+	}
+	
+	@GetMapping("delete-item/{itemId}")
+	public String deleteItem(@PathVariable("itemId") Integer itemId, Principal principal, HttpSession session) {
+		Item item = itemRepository.findItemByEmailAndItemId(principal.getName(), itemId);
+		if(item == null) {
+			return "redirect:/auction-house/manage-items/0";
+		}
+		try {
+			item.setDeleted(true);
+			itemRepository.save(item);
+			session.setAttribute("message", new Message("Item Successfully Deleted!", "alert-success"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("message", new Message("something went wrong!", "alert-danger"));
+		}
+		return "redirect:/auction-house/manage-items/0";
 	}
 }

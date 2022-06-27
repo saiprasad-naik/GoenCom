@@ -108,6 +108,7 @@ public class UserController {
 				User user = userRepository.getUserByEmail(principal.getName());
 				Item item = itemRepository.findById(itemId).get();
 				interest = new Interest();
+				user.getInterests().add(interest);
 				interest.setItem(item);
 				interest.setUser(user);
 				interestRepository.save(interest);

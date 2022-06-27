@@ -28,15 +28,18 @@
 			<div class="alert alert-primary" th:if="${session.message}"
 				th:classappend="${session.message.type}" role="alert">
 				<span th:text="${session.message.content}"></span>
-				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
 			<input type="name" id="fname" name="fName"
 				placeholder="Enter first name" required th:value="${user.fName}" />
 			<input type="name" id="lname" name="lName"
-				placeholder="Enter last name" required th:value="${user.lName}" /> <input
-				type="email" id="email" name="email" placeholder="Enter email"
-				required th:value="${user.email}" /> <input type="password"
-				id="password" name="password" placeholder="Enter password" required />
+				placeholder="Enter last name" required th:value="${user.lName}" />
+			<input type="email" id="email" name="email" placeholder="Enter email"
+				readonly th:value="${user.email}" /> <input type="password"
+				id="password" name="password" placeholder="Enter password" required
+				th:classappend="${#fields.hasErrors('password')?'is-invalid':''}" />
+			<div id="validationServerUsernameFeedback" class="invalid-feedback"
+				th:each=" e : ${#fields.errors('password')}" th:text="${e}">.</div>
 
 			<p>
 				Gender: <select name="gender" required th:value="${user.gender}">
@@ -336,9 +339,15 @@
 			</p>
 
 			<input type="tel" id="pincode" name="pincode"
-				placeholder="Enter Pincode" th:value="${user.pincode}"> <input
-				type="tel" id="user-phno" name="phoneNo"
-				placeholder="Enter Phone Number" th:value="${user.phoneNo}">
+				placeholder="Enter Pincode" th:value="${user.pincode}"
+				th:classappend="${#fields.hasErrors('pincode')?'is-invalid':''}">
+			<div id="validationServerUsernameFeedback" class="invalid-feedback"
+				th:each=" e : ${#fields.errors('pincode')}" th:text="${e}">.</div>
+			<input type="tel" id="user-phno" name="phoneNo"
+				placeholder="Enter Phone Number" th:value="${user.phoneNo}"
+				th:classappend="${#fields.hasErrors('phoneNo')?'is-invalid':''}">
+			<div id="validationServerUsernameFeedback" class="invalid-feedback"
+				th:each=" e : ${#fields.errors('phoneNo')}" th:text="${e}">.</div>
 			<a href="#"><button type="submit" class="btn1">Sign up</button></a>
 
 			<p>
