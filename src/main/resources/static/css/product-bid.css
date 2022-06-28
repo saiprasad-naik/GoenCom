@@ -1,240 +1,230 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',
-        sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
 
 .one {
-    margin: 300px auto 100px auto;
+	margin: 300px auto 100px auto;
 }
 
 .navbar {
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 .btn-outline-light {
-    margin-left: 30rem;
+	margin-left: 30rem;
 }
 
 .fa-user {
-    color: white;
-    padding: .6rem 0 .2rem 0;
-    margin-left: 30rem;
+	color: white;
+	padding: .6rem 0 .2rem 0;
+	margin-left: 30rem;
 }
 
-
-.content{
-    align-items: center;
-    width: 95%;
-        margin: 7rem auto;
-        padding: 2rem;
-        border-radius: 20px;
-        background-color: rgb(98, 98, 223);
-        color: white;
-        box-shadow: rgba(37, 37, 39, 0.571) 0px 7px 29px 0px;
+.content {
+	align-items: center;
+	width: 95%;
+	margin: 7rem auto;
+	padding: 2rem;
+	border-radius: 20px;
+	background-color: rgb(98, 98, 223);
+	color: white;
+	box-shadow: rgba(37, 37, 39, 0.571) 0px 7px 29px 0px;
 }
 
-.content .pics{
-    display: flex;
-    flex-wrap: wrap;
+.content .pics {
+	display: flex;
+	flex-wrap: wrap;
 }
 
-.content .pics img{
-    width: 20%;
-    height: 20%;
+.content .pics img {
+	width: 20%;
+	height: 20%;
 }
 
-#item-name{
-    text-align: center;
+#item-name {
+	text-align: center;
 }
 
-.content h2, h4, h5{
-    font-weight: 900;
+.content h2, h4, h5 {
+	font-weight: 900;
 }
 
-#auction-house-name{
-    font-size: 20px;
+#auction-house-name {
+	font-size: 20px;
 }
 
-#item-desc{
-    color: white;
-    font-size: 15px;
+#item-desc {
+	color: white;
+	font-size: 15px;
 }
 
-.content h5{
-    font-size: 16px;
+.content h5 {
+	font-size: 16px;
 }
 
-.content p{
-    color: white;
-    text-align: left;
+.content p {
+	color: white;
+	text-align: left;
 }
 
-.content .bid{
-    display: flex;
-    margin: 1rem auto;
-    
+.content .bid {
+	display: flex;
+	margin: 1rem auto;
 }
 
-.content .bid input[type="number"]{
-    border: none;
-    padding: .5rem;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
+.content .bid input[type="number"] {
+	border: none;
+	padding: .5rem;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
 }
 
-.content .bid #bid{
-    border: none;
-    padding: 0 .5rem;
-    width: 10%;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    
+.content .bid #bid {
+	border: none;
+	padding: 0 .5rem;
+	width: 10%;
+	border-top-right-radius: 20px;
+	border-bottom-right-radius: 20px;
 }
 
-.content .bid #bid:hover{
-    background-color: black;
-    color: white;
+.content .bid #bid:hover {
+	background-color: black;
+	color: white;
 }
 
-#add-to-interest-list{
-    border: none;
-    padding: .6rem 1rem;
-    margin: 1rem auto;
-    border-radius: 20px;
+#add-to-interest-list {
+	border: none;
+	padding: .6rem 1rem;
+	margin: 1rem auto;
+	border-radius: 20px;
 }
 
-#add-to-interest-list:hover{
-    background-color: black;
-    color: white;
+#add-to-interest-list:hover {
+	background-color: black;
+	color: white;
 }
 
 /* footer starts here */
 .footer {
-    margin-top: 2rem;
-    background-color: rgb(40, 39, 39);
-    color: white;
-    padding: 1rem 10rem;
-    text-align: center;
+	margin-top: 2rem;
+	background-color: rgb(40, 39, 39);
+	color: white;
+	padding: 1rem 10rem;
+	text-align: center;
 }
 
 .footer h3 {
-    font-weight: bold;
-    font-size: 20px;
-    text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
 }
 
 #contact {
-    font-weight: 400;
-    color: gray;
+	font-weight: 400;
+	color: gray;
 }
 
 .footer h4 {
-    font-weight: bold;
-    font-size: 15px;
-    text-align: center;
-    margin: .5rem auto;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	margin: .5rem auto;
 }
 
 .footer .half3 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: white;
-    align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	color: white;
+	align-items: center;
 }
 
 .footer a {
-    text-decoration: underline;
-    color: gray;
+	text-decoration: underline;
+	color: gray;
 }
 
 .footer a:hover {
-    color: white;
+	color: white;
 }
 
 .footer .socials {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: white;
-    width: 50%;
-    margin: .5rem auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	color: white;
+	width: 50%;
+	margin: .5rem auto;
 }
 
 /* footer ends here  */
-
 @media screen and (max-width: 980px) {
-
-    #content {
-        width: 45%;
-    }
-
-    .content .pics {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .content .pics img {
-        width: 80%;
-        height: 80%;
-    }
-
-    .content .bid {
-        display: flex;
-        margin: 1rem auto;
-        width: 100%;
-    }
-
-    .footer {
-        padding: 1rem;
-    }
-
-    .footer .half3 {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        color: white;
-        text-align: center;
-    }
-
-    .footer .socials {
-        margin: 1rem auto;
-    }
+	#content {
+		width: 45%;
+	}
+	.content .pics {
+		display: flex;
+		flex-direction: column;
+	}
+	.content .pics img {
+		width: 80%;
+		height: 80%;
+	}
+	.content .bid {
+		display: flex;
+		flex-direction: column; margin : 1rem auto;
+		width: 100%;
+		margin: 1rem auto
+	}
+	.content .bid input[type="number"] {
+		border-radius: 20px;
+		margin-bottom: .5rem;
+	}
+	.content .bid #bid {
+		border-radius: 20px;
+	}
+	.footer {
+		padding: 1rem;
+	}
+	.footer .half3 {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		color: white;
+		text-align: center;
+	}
+	.footer .socials {
+		margin: 1rem auto;
+	}
 }
 
 @media screen and (max-width: 750px) {
-
-    #content {
-        width: 100%;
-    }
+	#content {
+		width: 100%;
+	}
 }
 
-
 @media screen and (max-width: 1040px) {
-    .fa-user {
-        margin-left: 10rem;
-    }
-
+	.fa-user {
+		margin-left: 10rem;
+	}
 }
 
 @media screen and (max-width: 770px) {
-    .fa-user {
-        margin-left: 1rem;
-    }
-
+	.fa-user {
+		margin-left: 1rem;
+	}
 }
 
 @media screen and (max-width: 440px) {
-    .fa-user {
-        margin-left: 0rem;
-    }
-
-    .content .bid #bid{
-        padding: 0 .7rem;
-        width: 100%;
-    }
-
+	.fa-user {
+		margin-left: 0rem;
+	}
+	.content .bid #bid {
+		padding: 0 .7rem;
+		width: 100%;
+	}
 }

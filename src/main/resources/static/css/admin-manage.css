@@ -1,156 +1,177 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',
-        sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
 }
+
 .one {
-    margin: 300px auto 100px auto;
+	margin: 300px auto 100px auto;
 }
 
 .navbar {
-    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+	box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 
 .btn-outline-light {
-    margin-left: 30rem;
+	margin-left: 30rem;
 }
 
-
 .header-text {
-    margin-top: 100px;
-    font-size: 3em;
-    text-align: center;
+	margin-top: 100px;
+	font-size: 3em;
+	text-align: center;
 }
 
 span {
-    font-weight: bold;
-    color: rgb(98, 98, 223);
-    ;
+	font-weight: bold;
+	color: rgb(98, 98, 223);
+	;
 }
-
 
 a:link {
-    text-decoration: none;
-    color: black;
+	text-decoration: none;
+	color: black;
 }
 
-.main{
-    margin: 100px auto;
+.main {
+	margin: 100px auto;
 }
 
-#outergallery{
-    margin: 2rem auto;
-    width: 90%;
-    text-align: center;
-    padding: 2rem auto;
+#outergallery {
+	margin: 2rem auto;
+	width: 90%;
+	text-align: center;
+	padding: 2rem auto;
 }
 
-.live-bid-heading{
-    font-weight: 900;
-    font-size: 2.5em;
+.live-bid-heading {
+	font-weight: 900;
+	font-size: 2.5em;
 }
 
-input[type="search"]{
-    width: 80%;
-    margin: 1rem auto;
-    padding: 1rem;
+input[type="search"] {
+	width: 80%;
+	margin: 1rem auto;
+	padding: 1rem;
 }
 
-#search-addon{
-    margin: 1rem auto;
-    background-color: white;
+#search-addon {
+	margin: 1rem auto;
+	background-color: white;
 }
 
-.user-gallery{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    margin: 3rem auto;
-    padding: 1rem;
-    border-radius: 20px;
-    background-color: rgb(98, 98, 223);
+.user-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 3rem auto;
+	padding: 1rem;
+	border-radius: 20px;
+	background-color: rgb(98, 98, 223);
 }
 
-#user-content{
-    margin: 1rem;
-    width: 20%;
-        float: left;
-        text-align: center;
-        border-radius: 20px;
-        padding-top: 10px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        background: #f2f2f2;
+#user-content {
+	margin: 1rem;
+	width: 20%;
+	float: left;
+	text-align: center;
+	border-radius: 20px;
+	padding-top: 10px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+	background: #f2f2f2;
 }
 
 #user-content:hover {
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
-    transform: translate(0px, -8px);
+	box-shadow: rgba(0, 0, 0, 0.2) 0px 7px 29px 0px;
+	transform: translate(0px, -8px);
 }
 
-.name{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    text-align: center;
-    margin: 1rem auto;
-}
-h3{
-    font-weight: 900;
+.name {
+	display: flex;
+	align-items: center;
+ 	justify-content: center; 
+	width: 70%;
+	text-align: center;
+	margin: 1rem auto;
 }
 
-#suspend-user, #delete-user{
-    border: none;
-    display: inline;
-    padding: .5rem;
-    border-radius: 10px;
-    margin: .5rem auto;
-    box-shadow: rgba(15, 15, 15, 0.2) 0px 7px 29px 0px;
+
+
+h3 {
+	font-weight: 900;
+	padding: .3rem;
+}
+
+#email {
+	padding: .5em; font-size : 1.1rem;
+	width: 100%;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: wrap;
+	overflow: hidden;
+	font-size: 1.1rem;
+}
+
+#suspend-user, #delete-user {
+	border: none;
+	display: inline;
+	padding: .5rem;
+	border-radius: 10px;
+	margin: .5rem auto;
+	box-shadow: rgba(15, 15, 15, 0.2) 0px 7px 29px 0px;
 }
 
 #suspend-user:hover, #delete-user:hover {
-    box-shadow: rgba(15, 15, 15, 0.361) 0px 7px 29px 0px;
+	box-shadow: rgba(15, 15, 15, 0.361) 0px 7px 29px 0px;
+}
+
+.pagination{
+	text-align: center;
+	margin: .2rem auto;
+	color: black;
+}
+
+.page-link{
+	background-color: yellow;
+	color: black;
+}
+
+.page-item{
+	color: black;
 }
 
 @media screen and (max-width: 1030px) {
-
-    .user-gallery {
-        padding: .2rem;
-    }
-
-    #user-content {
-        width: 35%;
-    }
+	.user-gallery {
+		padding: .2rem;
+	}
+	#user-content {
+		width: 35%;
+	}
 }
 
 @media screen and (max-width: 750px) {
-
-    #user-content {
-        width: 100%;
-    }
+	#user-content {
+		width: 100%;
+	}
 }
 
 @media screen and (max-width: 1040px) {
-    .btn-outline-light {
-        margin-left: 20rem;
-    }
-
+	.btn-outline-light {
+		margin-left: 20rem;
+	}
 }
 
 @media screen and (max-width: 770px) {
-    .btn-outline-light {
-        margin-left: 10rem;
-    }
-
+	.btn-outline-light {
+		margin-left: 10rem;
+	}
 }
 
 @media screen and (max-width: 440px) {
-    .btn-outline-light {
-        margin-left: 0rem;
-    }
-
+	.btn-outline-light {
+		margin-left: 0rem;
+	}
 }
