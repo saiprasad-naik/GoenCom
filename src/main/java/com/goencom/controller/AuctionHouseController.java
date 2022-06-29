@@ -17,6 +17,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -75,6 +76,8 @@ public class AuctionHouseController {
 	
 	@Autowired
 	private NotificationRepository notificationRepository;
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	/*
 	 * @Autowired private AuctionResultTask auctionResultTask;
 	 */
@@ -230,7 +233,7 @@ public class AuctionHouseController {
 	@GetMapping("/generate/{auctionId}")
 	public String generateResults(@PathVariable("auctionId") Integer auctionId) {
 		List<Bid> bids = bidRepository.findBidsbyAuctionId(auctionId);
-		if (bids == null) {
+		if (bids.size() <= 0) {
 			return "redirect:/auction-house/manage-auction/0";
 		}
 		List<Bid> candidates = highestBids(bids);
@@ -341,5 +344,42 @@ public class AuctionHouseController {
 			session.setAttribute("message", new Message("something went wrong!", "alert-danger"));
 		}
 		return "redirect:/auction-house/manage-items/0";
+	}
+	
+	@GetMapping("/new-password")
+	public String newPassword() {
+		return "change-password";
+	}
+
+	@PostMapping("/change-password")
+	public String changePassword(Principal principal, @RequestParam("old-password") String oldPassword,
+			@RequestParam("new-password") String newPassword, @RequestParam("new-password2") String newPassword2,
+			HttpSession session) {
+		try {
+			User user = userRepository.getUserByEmail(principal.getName());
+			if (this.passwordEncoder.matches(oldPassword, user.getPassword())) {
+				if(newPassword.length() < 8) {
+					session.setAttribute("message", new Message("password length must be greater than 8 characters", "alert-danger"));
+					return "redirect:new-password";
+				}
+				if (newPassword.equals(newPassword2)) {
+					
+					user.setPassword(passwordEncoder.encode(newPassword));
+					userRepository.save(user);
+				} else {
+					session.setAttribute("message", new Message("password don't match!", "alert-danger"));
+					return "redirect:new-password";
+				}
+
+			} else {
+				session.setAttribute("message", new Message("incorrect password!", "alert-danger"));
+				return "redirect:new-password";
+			}
+			session.setAttribute("message", new Message("successfully updated your password!", "alert-success"));
+		} catch (Exception e) {
+			session.setAttribute("message", new Message("something went wrong!", "alert-danger"));
+			return "redirect:new-password";
+		}
+		return "redirect:edit-details";
 	}
 }
