@@ -46,7 +46,7 @@ public class UserController {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
-	@RequestMapping(path = "/profile")
+	@RequestMapping(path = "/")
 	public String profile(Model model, Principal principal) {
 		User user = userRepository.getUserByEmail(principal.getName());
 		model.addAttribute("user", user);

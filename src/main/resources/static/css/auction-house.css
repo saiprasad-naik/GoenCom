@@ -42,39 +42,45 @@
 .auction-house-details {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    width: 95%;
+    width: 85%;
+    margin: 0 auto;
 }
 
-.half1{
-    text-align: left;
+.half1 {
+    width: 70%;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
 }
+
 
 .half2 {
-    text-align: right;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
 }
 
-.half1,
-.half2 {
-    width: 40%;
+.half2 a {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    font-weight: 900;
+    margin: 1rem auto;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.299) 0px 7px 19px 0px;
+}
+
+.half2 a:hover {
+    color: black;
+    text-decoration: underline;
+    box-shadow: rgba(0, 0, 0, 0.728) 0px 7px 19px 0px;
 }
 
 span {
     font-weight: 700;
-}
-
-.half2 a {
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: .8rem 0;
-    font-weight: 800;
-}
-
-.half2 a:hover {
-    color: white;
-    text-decoration: underline;
 }
 
 #edit-auction-house{
@@ -83,12 +89,13 @@ span {
     margin: 2rem auto 1rem auto;
     padding: .5rem;
     border-radius: 20px;
-    box-shadow: rgba(30, 30, 30, 0.267) 0px 7px 19px 0px;
+    box-shadow: rgba(0, 0, 0, 0.507) 0px 10px 29px 0px;
 }
 
 #edit-auction-house a {
     text-decoration: none;
     color: black;
+
 }
 
 #edit-auction-house:hover {
@@ -153,8 +160,14 @@ span {
 
 @media screen and (max-width: 980px) {
 
+.half1,
+    .half2 {
+        width: 100%;
+        margin: 1rem auto;
+    }
+
     .half1{
-        text-align: center;
+        text-align: left;
     }
 
     .half2 {
@@ -230,5 +243,15 @@ span {
     .btn-outline-light {
         margin-left: 0rem;
     }
+
+          .half2 {
+              flex-direction: column;
+              width: 90%;
+              margin: 0 auto;
+          }
+    
+          .half2 a {
+              width: 100%;
+          }
 
 }

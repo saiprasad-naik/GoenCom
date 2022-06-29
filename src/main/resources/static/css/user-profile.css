@@ -20,45 +20,56 @@
     background-color: rgb(98, 98, 223);
     box-shadow: rgba(0, 0, 0, 0.299) 0px 7px 19px 0px;
     width: 80%;
-    margin: 10rem auto ;
     border-radius: 20px;
     color: white;
-    padding: 5rem;
+    padding: 1rem 0 3rem 0;
+}
+
+img{
+    width: 30%;
+    height: 30%;
 }
 
 #user-name{
     font-weight: 900;
-    padding: 2rem 0;
+    padding: 1rem 0 2rem 0;
 }
 
-.user-details{
+.half1{
+    width: 70%;
+    color: white;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
+.half2{
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 95%;
+    width: 50%;
+    margin: 0 auto;
 }
 
-.half1, .half2{
-    width: 40%;
+.half2 a {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    font-weight: 900;
+    margin: 1rem auto;
+    border-radius: 30px;
+    box-shadow: rgba(0, 0, 0, 0.299) 0px 7px 19px 0px;
+}
+
+.half2 a:hover {
+    color: black;
+    text-decoration: underline;
+    box-shadow: rgba(0, 0, 0, 0.728) 0px 7px 19px 0px;
 }
 
 span{
     font-weight: 700;
 }
 
-.half2 a{
-    display: block;
-    text-decoration: none;
-    color: white;
-    padding: .8rem 0;
-    font-weight: 800;
-}
-
-.half2 a:hover{
-    color: white;
-    text-decoration: underline;
-}
 
 #edit-user{
     width: 40%;
@@ -66,16 +77,17 @@ span{
     margin: 2rem auto 1rem auto;
     padding: .5rem;
     border-radius: 20px;
-    box-shadow: rgba(30, 30, 30, 0.267) 0px 7px 19px 0px;
+    box-shadow: rgba(30, 30, 30, 0.568) 0px 7px 19px 0px;
 }
 
 #edit-user a{
     text-decoration: none;
     color: black;
+    font-weight: 900;
 }
 
 #edit-user:hover{
-    box-shadow: rgba(0, 0, 0, 0.322) 0px 7px 19px 0px;
+    box-shadow: rgba(0, 0, 0, 0.728) 0px 7px 19px 0px;
     font-weight: 900;
 }
 
@@ -144,11 +156,13 @@ span{
     .user-details{
         flex-direction: column;
         width: 100%;
+        
     }
 
     .half1,
     .half2 {
             width: 100%;
+            margin: 1rem auto;
         }
 
     #edit-user{
@@ -174,14 +188,14 @@ span{
 
 @media screen and (max-width: 1040px) {
     .btn-outline-light {
-        margin-left: 20rem;
+        margin-left: 10rem;
     }
 
 }
 
 @media screen and (max-width: 770px) {
     .btn-outline-light {
-        margin-left: 10rem;
+        margin-left: 0rem;
     }
 
 }
@@ -190,5 +204,20 @@ span{
     .btn-outline-light {
         margin-left: 0rem;
     }
+
+        img {
+            width: 90%;
+            height: 90%;
+        }
+
+        .half2 {
+            flex-direction: column;
+            width: 90%;
+            margin: 0 auto;
+            }
+
+        .half2 a{
+            width: 100%;
+        }
 
 }

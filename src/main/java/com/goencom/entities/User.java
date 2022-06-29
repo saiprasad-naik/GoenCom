@@ -42,7 +42,7 @@ public class User {
 	private int pincode;
 	@Column(unique = true)
 	private String email;
-	@Size(min = 8, max = 16, message = "Enter password between 8 and 16 characters")
+	@Size(min = 8, message = "Enter password must be greater than 8 characters")
 	private String password;
 	private Date dob;
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

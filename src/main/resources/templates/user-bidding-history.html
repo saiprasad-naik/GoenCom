@@ -45,20 +45,21 @@
 
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item active"><a href="./index.html"
-							class="nav-link active">Home</a></li>
+						<li class="nav-item active"><a href="/user/"
+							class="nav-link active">Profile</a></li>
 
-						<li class="nav-item "><a href="./user-interest-list.html"
+						<li class="nav-item "><a href="/user/interest-list/0"
 							class="nav-link">Interest List</a></li>
-						<li class="nav-item "><a href="./user-bidded-items-list.html"
+						<li class="nav-item "><a href="/user/bidded-items/0"
 							class="nav-link">Bidded Items</a></li>
-						<li class="nav-item "><a href="./user-bidding-history.html"
+						<li class="nav-item "><a href="/user/bid-history/0"
 							class="nav-link">Bidding History</a></li>
 
-						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
-						</li>
-						<a href="./user-profile.html"><i class="fa-solid fa-user">
-						</i></a>
+						<!-- <li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						</li> -->
+
+						<!-- <a href="./user-profile.html"><i class="fa-solid fa-user">
+						</i></a> -->
 
 					</ul>
 				</div>
@@ -93,7 +94,7 @@
 
 
 			</div>
-			<nav aria-label="Page navigation example">
+			<nav aria-label="Page navigation example" th:if="${totalPages > 0}">
 				<ul class="pagination">
 					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
 						class="page-link" th:href="${currentPage} - 1">Previous</a></li>

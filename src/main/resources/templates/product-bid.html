@@ -52,21 +52,37 @@
 
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
-						<li class="nav-item active"><a href="./index.html"
-							class="nav-link active">Home</a></li>
+						<!-- <li class="nav-item active"><a href="./index.html"
+							class="nav-link active">Home</a></li> -->
 
-						<li class="nav-item "><a href="./user-interest-list.html"
-							class="nav-link">Interest List</a></li>
-						<li class="nav-item "><a href="./user-bidded-items-list.html"
-							class="nav-link">Bidded Items</a></li>
-						<li class="nav-item "><a href="./user-bidding-history.html"
-							class="nav-link">Bidding History</a></li>
-
-						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
+						<li class="nav-item "><a href="/#about" class="nav-link">About</a>
 						</li>
-						<a href="./user-profile.html"><i class="fa-solid fa-user">
-						</i></a>
 
+						<li class="nav-item "><a href="/#footer" class="nav-link">Contact</a>
+						</li>
+
+						<li class="nav-item dropdown"><a href="#"
+							class="nav-link dropdown-toggle" id="navbarDropdown"
+							role="button" data-bs-toggle="dropdown" aria-expanded="false">Bids</a>
+							<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<li><a href="/#outergallery" class="dropdown-item">Live
+										Bids</a></li>
+								<li><a href="/#upcoming-outergallery" class="dropdown-item">Upcoming
+										Bids</a></li>
+
+							</ul></li>
+						<div th:switch="${user.role}">
+							<button th:case="'ROLE_USER'" type="button"
+								class="btn btn-outline-light" onclick="profile()">Profie</button>
+							<button th:case="'ROLE_AUCTIONEER'" type="button"
+								class="btn btn-outline-light" onclick="auctionHouseDashboard()">Auction
+								House Dashboard</button>
+							<button th:case="'ROLE_ADMIN'" type="button"
+								class="btn btn-outline-light" onclick="adminDashboard()">Admin
+								Dashboard</button>
+							<button th:case="*" type="button" class="btn btn-outline-light"
+								onclick="signin()">Sign In</button>
+						</div>
 					</ul>
 				</div>
 			</div>
@@ -74,11 +90,11 @@
 	</section>
 	<!-- Navbar ends here -->
 	<div class="content">
-	<div class="alert alert-primary" th:if="${session.message}"
-				th:classappend="${session.message.type}" role="alert">
-				<span th:text="${session.message.content}"></span>
-				<th:block th:text="${#session.removeAttribute('message')}" ></th:block>
-			</div>
+		<div class="alert alert-primary" th:if="${session.message}"
+			th:classappend="${session.message.type}" role="alert">
+			<span th:text="${session.message.content}"></span>
+			<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+		</div>
 		<h2 id="item-name" th:text="${auction.item.name}">Lorem, ipsum.</h2>
 		<div class="pics">
 			<img th:src="@{'/images/' + ${auction.item.images[0].url}}" alt=""
@@ -102,15 +118,20 @@
 					th:text="${auction.item.basePrice}">2300</span>
 			</h5>
 		</div>
-		<form th:action="@{'/user/bid/' + ${auction.auctionId}} + '/'" method="post">
+		<form th:action="@{'/user/bid/' + ${auction.auctionId}} + '/'"
+			method="post">
 			<div class="bid" th:if="${bid == null}">
-				<input type="number" placeholder="Enter Bid Ammount" name="amount" required
-					id="bid-amount">
+				<input type="number" placeholder="Enter Bid Ammount" name="amount"
+					required id="bid-amount">
 				<button type="submit" id="bid">Bid</button>
 			</div>
 			<div th:unless="${bid == null}">
-			 	<h5>result status: <span th:text="${bid.status}"></span></h5>
-			 	<h5>bidded amount: <span th:text="${bid.amount}"></span> </h5>
+				<h5>
+					result status: <span th:text="${bid.status}"></span>
+				</h5>
+				<h5>
+					bidded amount: <span th:text="${bid.amount}"></span>
+				</h5>
 			</div>
 		</form>
 
@@ -147,6 +168,22 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
+	<script>
+	function profile(){
+  	location.href = "/user/"
+  }
+  function signin()
+  {
+      location.href = "/sign-in";
+  } 
+  function auctionHouseDashboard(){
+  	location.href = "/auction-house/"
+  }
+  
+  function adminDashboard(){
+  	location.href = "/admin/"
+  }
+	</script>
 </body>
 
 </html>

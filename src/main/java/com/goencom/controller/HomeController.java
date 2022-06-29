@@ -120,6 +120,10 @@ public class HomeController {
 		if (principal != null) {
 			Interest interest = interestRepository.findInterestbyEmailAndItemId(principal.getName(), itemId);
 			model.addAttribute("interest", interest);
+			User user = userRepository.getUserByEmail(principal.getName());
+			model.addAttribute("user", user);
+		}else {
+			model.addAttribute("user", new User());
 		}
 		return "upcoming-bids";
 	}
@@ -133,12 +137,18 @@ public class HomeController {
 		if (principal != null) {
 			Bid bid = bidRepository.findBidbyEmailAndAuctionId(principal.getName(), auctionId);
 			model.addAttribute("bid", bid);
+			User user = userRepository.getUserByEmail(principal.getName());
+			model.addAttribute("user", user);
+		}else {
+			model.addAttribute("user", new User());
 		}
 		return "product-bid";
 	}
 
 	@GetMapping("/forgot-password")
-	public String forgotPassword() {
+	public String forgotPassword(HttpSession session) {
+		session.removeAttribute("email");
+		session.removeAttribute("otp");
 		return "send-otp";
 	}
 
