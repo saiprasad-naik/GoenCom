@@ -23,6 +23,11 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
 	;
+
+.no-items {
+	text-align: center;
+	color: white;
+}
 </style>
 </head>
 
@@ -32,7 +37,7 @@
 	<section>
 		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
 			<div class="container">
-				<a href="#" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+				<a href="/" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
 					class="fa-solid fa-cutlery"></i>
 
 				<button type="button" data-bs-toggle="collapse"
@@ -46,15 +51,17 @@
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
 
-						<li class="nav-item "><a href="./manage-auction-items.html"
-							class="nav-link">Manage Items</a></li>
-						<li class="nav-item "><a href="./manage-auction.html"
-							class="nav-link">Manage Auctions</a></li>
-						<li class="nav-item "><a href="#footer" class="nav-link">Contact</a>
-						</li>
+						<li class="nav-item "><a href="/auction-house/"
+							class="nav-link">Dashboard</a></li>
+						<li class="nav-item "><a
+							href="/auction-house/manage-auction/0" class="nav-link">Manage
+								Auctions</a></li>
+						<li class="nav-item "><a
+							href="/auction-house/auction-results/0" class="nav-link">Auction
+								Results</a></li>
 
-						<button type="button" class="btn btn-outline-light"
-							onclick="logout()">Logout</button>
+						<!-- <button type="button" class="btn btn-outline-light"
+							onclick="logout()">Logout</button> -->
 					</ul>
 				</div>
 			</div>
@@ -74,7 +81,7 @@
 				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
 			</div>
 			<div class="gallery">
-
+				<h4 th:if="${items.empty}" class="no-items">No items up yet!</h4>
 				<div id="content" onclick="productopen()" th:each="i : ${items}">
 					<img th:src="@{'/images/' + ${i.images[0].url}}" alt="">
 					<h3 id="itemname" th:text="${i.name}"></h3>
@@ -94,7 +101,7 @@
 
 
 			</div>
-			<nav aria-label="Page navigation example">
+			<nav aria-label="Page navigation example" th:if="${totalPages > 0}">
 				<ul class="pagination">
 					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
 						class="page-link" th:href="${currentPage} - 1">Previous</a></li>
@@ -134,7 +141,7 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
 		crossorigin="anonymous"></script>
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<script>
   function logout()
   {

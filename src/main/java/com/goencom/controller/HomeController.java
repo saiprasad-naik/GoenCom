@@ -159,7 +159,7 @@ public class HomeController {
 			Random random = new Random();
 			int otp = random.nextInt(99999);
 			String subject = "GoenCom OTP";
-			String message = "your otp is : " + otp;
+			String message = emailService.otpMessage(otp);
 			boolean result = this.emailService.sendEmail(subject, message, email);
 			if (result) {
 				session.setAttribute("message", new Message("otp sent!!!", "alert-success"));
@@ -216,7 +216,7 @@ public class HomeController {
 			Random random = new Random();
 			int otp = random.nextInt(99999);
 			String subject = "GoenCom OTP";
-			String message = "your otp is : " + otp;
+			String message = emailService.otpMessageForEmailVerification(otp);
 			boolean result = this.emailService.sendEmail(subject, message, email);
 			if (result) {
 				session.setAttribute("message", new Message("otp sent!!!", "alert-success"));

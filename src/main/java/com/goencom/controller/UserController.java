@@ -1,6 +1,9 @@
 package com.goencom.controller;
 
 import java.security.Principal;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -22,11 +25,13 @@ import com.goencom.dao.AuctionRepository;
 import com.goencom.dao.BidRepository;
 import com.goencom.dao.InterestRepository;
 import com.goencom.dao.ItemRepository;
+import com.goencom.dao.NotificationRepository;
 import com.goencom.dao.UserRepository;
 import com.goencom.entities.Auction;
 import com.goencom.entities.Bid;
 import com.goencom.entities.Interest;
 import com.goencom.entities.Item;
+import com.goencom.entities.Notification;
 import com.goencom.entities.User;
 import com.goencom.helper.Message;
 
@@ -45,11 +50,16 @@ public class UserController {
 	private ItemRepository itemRepository;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
-
+	@Autowired
+	private NotificationRepository notificationRepository;
+	
 	@RequestMapping(path = "/")
 	public String profile(Model model, Principal principal) {
 		User user = userRepository.getUserByEmail(principal.getName());
 		model.addAttribute("user", user);
+		List<Notification> notifications = notificationRepository.findNotificationsUserId(user.getUserId());
+		Collections.reverse(notifications);
+		model.addAttribute("notifications",notifications);
 		return "user-profile";
 	}
 
@@ -59,6 +69,10 @@ public class UserController {
 		try {
 			User user = userRepository.getUserByEmail(principal.getName());
 			Auction auction = auctionRepository.findById(auctionId).get();
+			if(amount < auction.getItem().getBasePrice()) {
+				session.setAttribute("message", new Message("Entered Amount Less than Base Price!!!", "alert-danger"));
+				return "redirect:/product/" + auctionId;
+			}
 			Bid bid = bidRepository.findBidbyEmailAndAuctionId(principal.getName(), auctionId);
 			if (bid == null) {
 				bid = new Bid();

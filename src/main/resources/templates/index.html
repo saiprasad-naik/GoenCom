@@ -24,6 +24,11 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
 	;
+
+.no-items {
+	text-align: center;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -112,7 +117,7 @@
 			<h2 class="live-bid-heading">Live Bids</h2>
 
 			<div class="gallery">
-
+				<h4 th:if="${auctions.empty}" class="no-items">No items up yet!</h4>
 				<div id="content" th:each="a : ${auctions}"
 					th:onclick="|productopen(${a.auctionId})|">
 					<img th:src="@{'/images/' + ${a.item.images[0].url} }" alt=""
@@ -213,7 +218,7 @@
 			<h2 class="live-bid-heading">Upcoming Bids</h2>
 
 			<div class="upcoming-gallery">
-
+				<h4 th:if="${items.empty}" class="no-items">No items up yet!</h4>
 				<div id="upcoming-content"
 					th:onclick="|upcomingproductopen(${i.itemId})|"
 					th:each="i : ${items}">

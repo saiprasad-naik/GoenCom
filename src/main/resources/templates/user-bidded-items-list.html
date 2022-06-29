@@ -23,6 +23,11 @@
 @import
 	url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap')
 	;
+
+.no-items {
+	text-align: center;
+	color: white;
+}
 </style>
 </head>
 
@@ -73,6 +78,8 @@
 			<h2 class="live-bid-heading">Bidded Items</h2>
 
 			<div class="gallery">
+
+				<h4 class="no-items" th:if="${bids.empty}">No items up yet!</h4>
 
 				<div id="content" th:each="b : ${bids}">
 					<img th:src="@{'/images/' + ${b.auction.item.images[0].url}}"

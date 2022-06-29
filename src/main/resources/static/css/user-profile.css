@@ -70,6 +70,46 @@ span{
     font-weight: 700;
 }
 
+.notifs{
+    width: 40%;
+    margin: 2rem auto;
+    background-color: white;
+    color: black;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.728) 0px 7px 19px 0px;
+    overflow: scroll;
+    height: 40vh;
+}
+
+.notifs h2{
+    font-size: 1.5rem;
+    font-weight: 900;
+    background-color: black;
+    padding: .6rem;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.notif-info{
+    border-bottom: 2px solid black;
+}
+
+.notif-info{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 .6rem;
+    text-align: left;
+}
+
+.notif-cancel{
+    background-color: rgb(230, 230, 230);
+    height: 10%;
+    padding: 0rem .5rem;
+    margin: auto;
+    font-weight: 900;
+    border: none;
+}
 
 #edit-user{
     width: 40%;
@@ -198,6 +238,10 @@ span{
         margin-left: 0rem;
     }
 
+        .notifs {
+            width: 60%;
+        }
+
 }
 
 @media screen and (max-width: 440px) {
@@ -218,6 +262,10 @@ span{
 
         .half2 a{
             width: 100%;
+        }
+
+        .notifs{
+            width: 90%;
         }
 
 }

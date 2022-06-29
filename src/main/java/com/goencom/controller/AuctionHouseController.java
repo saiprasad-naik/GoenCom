@@ -30,16 +30,21 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.goencom.dao.AuctionRepository;
 import com.goencom.dao.BidRepository;
+import com.goencom.dao.InterestRepository;
 import com.goencom.dao.ItemRepository;
+import com.goencom.dao.NotificationRepository;
 import com.goencom.dao.ResultRepository;
 import com.goencom.dao.UserRepository;
 import com.goencom.entities.Auction;
 import com.goencom.entities.Bid;
 import com.goencom.entities.Image;
+import com.goencom.entities.Interest;
 import com.goencom.entities.Item;
+import com.goencom.entities.Notification;
 import com.goencom.entities.Result;
 import com.goencom.entities.User;
 import com.goencom.helper.*;
+import com.goencom.service.EmailService;
 
 @Controller
 @RequestMapping("/auction-house")
@@ -62,6 +67,14 @@ public class AuctionHouseController {
 	@Autowired
 	private ResultRepository resultRepository;
 
+	@Autowired
+	private EmailService emailService;
+
+	@Autowired
+	private InterestRepository interestRepository;
+	
+	@Autowired
+	private NotificationRepository notificationRepository;
 	/*
 	 * @Autowired private AuctionResultTask auctionResultTask;
 	 */
@@ -190,8 +203,19 @@ public class AuctionHouseController {
 			auction.setUser(user);
 			auction.setStatus(Auction.RUNNING);
 			auctionRepository.save(auction);
-			auction = auctionRepository.findAuctionByItemId(itemId);
+			List<Interest> interests = interestRepository.findInterestbyItemId(itemId);
+			if (interests != null) {
+				List<Notification> notifications = new ArrayList<Notification>();
+				for (int i = 0; i < interests.size(); i++) {
+					Notification temp = new Notification();
+					temp.setUser(interests.get(i).getUser());
+					temp.setMessage(item.getName() + " is up for the auction please go and check out!!!");
+					notifications.add(temp);
+				}
+				notificationRepository.saveAll(notifications);
+			}
 			/*
+			 * auction = auctionRepository.findAuctionByItemId(itemId);
 			 * auctionResultTask.setAuctionId(auction.getAuctionId());
 			 * threadPoolTaskScheduler.schedule(auctionResultTask, new
 			 * Date(System.currentTimeMillis() + 60000));
@@ -206,8 +230,11 @@ public class AuctionHouseController {
 	@GetMapping("/generate/{auctionId}")
 	public String generateResults(@PathVariable("auctionId") Integer auctionId) {
 		List<Bid> bids = bidRepository.findBidsbyAuctionId(auctionId);
+		if (bids == null) {
+			return "redirect:/auction-house/manage-auction/0";
+		}
 		List<Bid> candidates = highestBids(bids);
-		Bid bid =candidates.get(0);
+		Bid bid = candidates.get(0);
 		if (candidates.size() != 1) {
 			bid = lowestBidId(candidates);
 		}
@@ -219,9 +246,19 @@ public class AuctionHouseController {
 		bid.setResult(result);
 		result.setBid(bid);
 		resultRepository.save(result);
+		emailService.sendEmail("Congratulations From Team GoenCom.", emailService.bidWonMessage(),
+				bid.getUser().getEmail());
 		if (bids.size() != 1) {
 			bids = exceptHighestBid(bids, bid);
 			bidRepository.saveAll(bids);
+			List<Notification> notifications = new ArrayList<Notification>();
+			for (int i = 0; i < bids.size(); i++) {
+				Notification temp = new Notification();
+				temp.setUser(bids.get(i).getUser());
+				temp.setMessage("Sorry, you lost bid for " + bids.get(i).getAuction().getItem().getName());
+				notifications.add(temp);
+			}
+			notificationRepository.saveAll(notifications);
 		}
 		return "redirect:/auction-house/manage-auction/0";
 	}
@@ -267,7 +304,7 @@ public class AuctionHouseController {
 		bids.remove(id);
 		return bids;
 	}
-	
+
 	@GetMapping("auction-results/{page}")
 	public String manageResults(@PathVariable("page") Integer page, Model model, Principal principal) {
 		Pageable pageable = PageRequest.of(page, 4);
@@ -277,22 +314,22 @@ public class AuctionHouseController {
 		model.addAttribute("totalPages", results.getTotalPages());
 		return "auction-results";
 	}
-	
+
 	@GetMapping("edit-item/{itemId}")
 	public String editItem(@PathVariable("itemId") Integer itemId, Model model, Principal principal) {
 		User user = userRepository.getUserByEmail(principal.getName());
 		Item item = itemRepository.findById(itemId).get();
-		if(user.getUserId() != item.getUser().getUserId()) {
+		if (user.getUserId() != item.getUser().getUserId()) {
 			return "redirect:/auction-house/manage-items/0";
 		}
 		model.addAttribute("item", item);
 		return "edit-item";
 	}
-	
+
 	@GetMapping("delete-item/{itemId}")
 	public String deleteItem(@PathVariable("itemId") Integer itemId, Principal principal, HttpSession session) {
 		Item item = itemRepository.findItemByEmailAndItemId(principal.getName(), itemId);
-		if(item == null) {
+		if (item == null) {
 			return "redirect:/auction-house/manage-items/0";
 		}
 		try {

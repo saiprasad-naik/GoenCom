@@ -32,8 +32,8 @@
 	<section>
 		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
 			<div class="container">
-				<a href="/" class="navbar-brand mb-0 h1 pr-5">
-					GoenCom. </a> <i class="fa-solid fa-cutlery"></i>
+				<a href="/" class="navbar-brand mb-0 h1 pr-5"> GoenCom. </a> <i
+					class="fa-solid fa-cutlery"></i>
 
 				<button type="button" data-bs-toggle="collapse"
 					data-bs-target="#navbarNav" class="navbar-toggler"
@@ -111,6 +111,18 @@
 				</div>
 
 			</div>
+
+			<div class="notifs">
+				<h2>Notifications</h2>
+
+				<div class="notif-info" th:each="n : ${notifications}">
+					<p class="notif-para" th:text="${n.message}">Lorem ipsum dolor, sit amet consectetur
+						adipisicing elit. Autem, error.</p>
+					<!-- <button class="notif-cancel">X</button> -->
+				</div>
+
+			</div>
+
 			<button id="edit-user">
 				<a href="edit-user">Edit</a>
 			</button>
