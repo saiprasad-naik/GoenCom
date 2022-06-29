@@ -73,11 +73,12 @@ public class AuctionHouseController {
 
 	@Autowired
 	private InterestRepository interestRepository;
-	
+
 	@Autowired
 	private NotificationRepository notificationRepository;
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
+
 	/*
 	 * @Autowired private AuctionResultTask auctionResultTask;
 	 */
@@ -234,34 +235,44 @@ public class AuctionHouseController {
 	public String generateResults(@PathVariable("auctionId") Integer auctionId) {
 		List<Bid> bids = bidRepository.findBidsbyAuctionId(auctionId);
 		if (bids.size() <= 0) {
+			Auction auction = auctionRepository.findById(auctionId).get();
+			auction.getItem().setEnabled(false);
+			auction.setStatus(Auction.FINNISHED);
+			Bid bid = new Bid();
+			bid.setAuction(auction);
+			bid.setUser(new User());
+			Result result = new Result();
+			result.setBid(bid);
+			resultRepository.save(result);
 			return "redirect:/auction-house/manage-auction/0";
-		}
-		List<Bid> candidates = highestBids(bids);
-		Bid bid = candidates.get(0);
-		if (candidates.size() != 1) {
-			bid = lowestBidId(candidates);
-		}
-		System.out.println(bid.getBidId());
-		bid.getAuction().getItem().setEnabled(false);
-		bid.getAuction().setStatus(Auction.FINNISHED);
-		bid.setStatus(Bid.WON_STATUS);
-		Result result = new Result();
-		bid.setResult(result);
-		result.setBid(bid);
-		resultRepository.save(result);
-		emailService.sendEmail("Congratulations From Team GoenCom.", emailService.bidWonMessage(),
-				bid.getUser().getEmail());
-		if (bids.size() != 1) {
-			bids = exceptHighestBid(bids, bid);
-			bidRepository.saveAll(bids);
-			List<Notification> notifications = new ArrayList<Notification>();
-			for (int i = 0; i < bids.size(); i++) {
-				Notification temp = new Notification();
-				temp.setUser(bids.get(i).getUser());
-				temp.setMessage("Sorry, you lost bid for " + bids.get(i).getAuction().getItem().getName());
-				notifications.add(temp);
+		} else {
+			List<Bid> candidates = highestBids(bids);
+			Bid bid = candidates.get(0);
+			if (candidates.size() != 1) {
+				bid = lowestBidId(candidates);
 			}
-			notificationRepository.saveAll(notifications);
+			System.out.println(bid.getBidId());
+			bid.getAuction().getItem().setEnabled(false);
+			bid.getAuction().setStatus(Auction.FINNISHED);
+			bid.setStatus(Bid.WON_STATUS);
+			Result result = new Result();
+			bid.setResult(result);
+			result.setBid(bid);
+			resultRepository.save(result);
+			emailService.sendEmail("Congratulations From Team GoenCom.", emailService.bidWonMessage(),
+					bid.getUser().getEmail());
+			if (bids.size() != 1) {
+				bids = exceptHighestBid(bids, bid);
+				bidRepository.saveAll(bids);
+				List<Notification> notifications = new ArrayList<Notification>();
+				for (int i = 0; i < bids.size(); i++) {
+					Notification temp = new Notification();
+					temp.setUser(bids.get(i).getUser());
+					temp.setMessage("Sorry, you lost bid for " + bids.get(i).getAuction().getItem().getName());
+					notifications.add(temp);
+				}
+				notificationRepository.saveAll(notifications);
+			}
 		}
 		return "redirect:/auction-house/manage-auction/0";
 	}
@@ -345,7 +356,7 @@ public class AuctionHouseController {
 		}
 		return "redirect:/auction-house/manage-items/0";
 	}
-	
+
 	@GetMapping("/new-password")
 	public String newPassword() {
 		return "change-password";
@@ -358,12 +369,13 @@ public class AuctionHouseController {
 		try {
 			User user = userRepository.getUserByEmail(principal.getName());
 			if (this.passwordEncoder.matches(oldPassword, user.getPassword())) {
-				if(newPassword.length() < 8) {
-					session.setAttribute("message", new Message("password length must be greater than 8 characters", "alert-danger"));
+				if (newPassword.length() < 8) {
+					session.setAttribute("message",
+							new Message("password length must be greater than 8 characters", "alert-danger"));
 					return "redirect:new-password";
 				}
 				if (newPassword.equals(newPassword2)) {
-					
+
 					user.setPassword(passwordEncoder.encode(newPassword));
 					userRepository.save(user);
 				} else {

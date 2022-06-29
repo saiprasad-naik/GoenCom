@@ -23,4 +23,7 @@ public interface ItemRepository extends JpaRepository<Item, Integer>{
 	
 	@Query("from Item as i where i.user.email =:email and i.itemId =:itemId and i.deleted = false")
 	public Item findItemByEmailAndItemId(@Param("email") String email, @Param("itemId") int itemId);
+	
+	@Query("from Item as i where i.deleted = false and i.visible = true and i.enabled = true ")
+	public Page<Item> findAllVisibleItems(Pageable pageable);
 }
