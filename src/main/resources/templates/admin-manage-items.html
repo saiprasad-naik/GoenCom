@@ -77,7 +77,7 @@
      <div class="items-gallery">
           
         <div id="items-content" th:each="i : ${items}">
-            <img th:src="@{/images/—Pngtree—a shoe store sells shoes_7256461.png}" alt="" id="item-pics">
+            <img th:src="@{'/images/' + ${i.images[0].url}}" alt="" id="item-pics">
             <h3 id="item-name" th:text="${i.name}"></h3>
             <p id="item-desc" th:text="${i.description}"></p>
             <h3 id="auction-house-name" th:text="${i.user.name}">Lorem ipsum.</h3>

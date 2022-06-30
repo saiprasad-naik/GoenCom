@@ -15,7 +15,7 @@
 }
 
 .btn-outline-light{
-    margin-left: 50rem;
+    margin-left: 40rem;
 }
 
 .landing-pic{
@@ -300,31 +300,30 @@ text-align: left;
     font-weight: bold;
     font-size: 20px;
     text-align: center;
-}
-
-#contact{
-    font-weight: 400;
-    color: gray;
-}
+    }
 
 .footer h4{
     font-weight: bold;
         font-size: 15px;
         text-align: center;
-        margin: .5rem auto;
+        margin: 2rem auto .5rem auto;
 }
 
 .footer .half3{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: white;
-    align-items: center;
+    margin: 0 auto 2rem auto;
+}
+
+
+.footer .half3 p{
+    padding: 0rem; 
+    font-size: .9em;
 }
 
 .footer a{
     text-decoration: underline;
     color: gray;
+    display: block;
+    padding: .2rem;
 }
 
 .footer a:hover{
@@ -336,8 +335,8 @@ text-align: left;
         flex-wrap: wrap;
         justify-content: space-between;
         color: white;
-        width: 50%;
-        margin: .5rem auto;
+        width: 20%;
+        margin: 1rem auto;
 }
 
 /* footer ends here  */
@@ -346,7 +345,7 @@ text-align: left;
 
 
 .landing-pic{
-        background:url(./images/bg-mobile.jpg);
+        background:url(/images/bg-mobile.jpg);
             background-size: cover;
             background-repeat: no-repeat;
     }
@@ -427,7 +426,7 @@ text-align: left;
 @media screen and (max-width: 1040px) {
         .landing-pic {
                 background:
-                    url(./images/bg-mobile4.jpg);
+                    url(/images/bg-mobile4.jpg);
                 background-size: cover;
                 background-repeat: no-repeat;
                 width: 100%;
@@ -445,7 +444,7 @@ text-align: left;
 
     .landing-pic {
         background:
-                url(./images/bg-mobile4.jpg);
+                url(/images/bg-mobile4.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             width: 100%;
@@ -458,7 +457,7 @@ text-align: left;
 
         .deco1 {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-                url(./images/deco1-mobile.jpg);
+                url(/images/deco1-mobile.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -466,7 +465,7 @@ text-align: left;
     
         .deco2 {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-                url(./images/deco2-mobile.jpg);
+                url(/images/deco2-mobile.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -474,7 +473,7 @@ text-align: left;
     
         .deco3 {
             background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-                url(./images/deco3-mobile.jpg);
+                url(/images/deco3-mobile.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -482,7 +481,7 @@ text-align: left;
 
         .about {
                     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)),
-                        url(./images/about-bg-mobile.jpg);
+                        url(/images/about-bg-mobile.jpg);
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-attachment: fixed;
@@ -495,7 +494,7 @@ text-align: left;
 
 .landing-pic {
         background:
-                url(./images/bg-mobile4.jpg);
+                url(/images/bg-mobile4.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             width: 100%;
@@ -537,7 +536,7 @@ text-align: left;
 
     .landing-pic {
         background:
-            url(./images/bg-mobile4.jpg);
+            url(/images/bg-mobile4.jpg);
         background-size: cover;
         background-repeat: no-repeat;
         width: 100vw;

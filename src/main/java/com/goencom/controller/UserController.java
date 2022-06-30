@@ -206,4 +206,15 @@ public class UserController {
 		}
 		return "redirect:edit-user";
 	}
+	
+	@GetMapping("/payment/{bidId}")
+	public String userPayment(@PathVariable Integer bidId, Principal principal, Model model) {
+		Bid bid = bidRepository.findById(bidId).get();
+		if(bid.getUser().getEmail().equals(principal.getName()) && bid.getStatus().equals(Bid.WON_STATUS)) {
+			model.addAttribute("bid", bid);
+		}else {
+			return "redirect:/";
+		}
+		return "user-make-payment";
+	}
 }

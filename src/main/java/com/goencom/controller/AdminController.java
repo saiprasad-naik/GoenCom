@@ -61,7 +61,7 @@ public class AdminController {
 	@GetMapping("/manage-items/{page}")
 	public String manageItems(@PathVariable("page") Integer page, Model model, Principal principal) {
 		Pageable pageable = PageRequest.of(page, 4);
-		Page<Item> items = itemRepository.findAllVisibleItems(pageable);
+		Page<Item> items = itemRepository.findAllItems(pageable);
 		model.addAttribute("items", items);
 		model.addAttribute("currentPage", page);
 		model.addAttribute("totalPages", items.getTotalPages());

@@ -26,12 +26,15 @@
     margin: 2rem auto;
     width: 90%;
     text-align: center;
-    padding: 2rem auto;
+    padding: 2rem 2rem;
+	background-color: rgb(98, 98, 223);
+	border-radius: 20px;
 }
 
 .live-bid-heading {
     font-weight: 900;
     font-size: 2.5em;
+    color: white;
 }
 
 input[type="search"] {

@@ -84,11 +84,11 @@
 					<p id="itemdesc" th:text="${r.bid.Auction.item.description}">Lorem
 						ipsum dolor sit, amet consectetur adipisicing elit. Nihil
 						doloremque tempora labore quam dolore veniam?</p>
-					<h6 id="user-name">
-						<span th:text="${r.bid.user.fName}"></span> <span
+					<h6 id="user-name" th:if="${r.bid.user != null}">
+						<span  th:text="${r.bid.user.fName}"></span> <span
 							th:text="${r.bid.user.lName}"></span>
 					</h6>
-					<h6 id="user-email" th:text="${r.bid.user.email}">vaibhavkalal@gmail.com</h6>
+					<h6 id="user-email" th:if="${r.bid.user != null}" th:text="${r.bid.user.email}">vaibhavkalal@gmail.com</h6>
 					<h6 id="bidded-price">
 						Result Bid : &#8377; <span th:text="${r.bid.amount}"></span>
 					</h6>

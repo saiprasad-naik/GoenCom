@@ -227,7 +227,7 @@ public class HomeController {
 				return "redirect:/new-email";
 			}
 		} else {
-			session.setAttribute("message", new Message("otp not sent!!!", "alert-danger"));
+			session.setAttribute("message", new Message("Email already exists!!!", "alert-danger"));
 			return "redirect:/new-email";
 		}
 		return "email-otp";

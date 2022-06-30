@@ -37,7 +37,7 @@
 	<section>
 		<nav class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
 			<div class="container">
-				<a href="./index.html" class="navbar-brand mb-0 h1 pr-5">
+				<a href="/" class="navbar-brand mb-0 h1 pr-5">
 					GoenCom. </a> <i class="fa-solid fa-cutlery"></i>
 
 				<button type="button" data-bs-toggle="collapse"
@@ -81,7 +81,7 @@
 			
 			<h4 class="no-items" th:if="${bids.empty}">No items up yet!</h4>
 
-				<div id="content" th:each="b : ${bids}">
+				<div id="content" th:each="b : ${bids}" th:onclick="${b.status == 'WON'}?|payment(${b.bidId})|:''">
 					<img th:src="@{'/images/' + ${b.auction.item.images[0].url}}"
 						alt="">
 					<h3 id="itemname" th:text="${b.auction.item.name}">Lorem
@@ -147,7 +147,11 @@
   function signin()
   {
       location.href = "./signin.html";
-  } 
+  }
+ 
+  function payment(s){
+  	location.href = "/user/payment/" + s;
+  }
 </script>
 
 </body>

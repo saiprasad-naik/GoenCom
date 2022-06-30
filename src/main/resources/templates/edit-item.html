@@ -14,9 +14,14 @@
 <body>
 
         <div class="container-form">
-        <form action="">
+        <form th:action="@{/auction-house/update-item}" method="post" enctype="multipart/form-data">
             <h3>Edit Item</h3>
-            
+            <div class="alert alert-primary" th:if="${session.message}"
+				th:classappend="${session.message.type}" role="alert">
+				<span th:text="${session.message.content}"></span>
+				<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+			</div>
+            <input type="hidden" name="itemId" th:value="${item.itemId}">
             <input
             type="name" id="item-name"
             name="name"
@@ -25,9 +30,9 @@
           
             <textarea name="description" id="item-desc" cols="70" rows="10" placeholder="Enter item description" th:text="${item.description}" required></textarea>
           
-            <input type="file" id="item-pics" name="pics" placeholder="Enter pictures" multiple required>
+            <input type="file" id="item-pics" name="image" placeholder="Enter pictures">
 
-            <input type="number" min="0" max="100000000" step="any" name="Base Price" id="base-price" placeholder="Base price (rupees)" th:value="${item.basePrice}"  required="required">
+            <input type="number" min="0" max="100000000" step="any" name="basePrice" id="base-price" placeholder="Base price (rupees)" th:value="${item.basePrice}"  readonly>
            
             <input type="submit" name="Save Item" value="Save" />
             <a href="/auction-house/manage-items/0"><button type="button" class="btn1">Cancel</button></a>

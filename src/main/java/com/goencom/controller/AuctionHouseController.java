@@ -240,7 +240,6 @@ public class AuctionHouseController {
 			auction.setStatus(Auction.FINNISHED);
 			Bid bid = new Bid();
 			bid.setAuction(auction);
-			bid.setUser(new User());
 			Result result = new Result();
 			result.setBid(bid);
 			resultRepository.save(result);
@@ -338,6 +337,25 @@ public class AuctionHouseController {
 		}
 		model.addAttribute("item", item);
 		return "edit-item";
+	}
+
+	@PostMapping("update-item")
+	public String updateItem(@RequestParam("itemId") Integer itemId, @RequestParam("name") String name,
+			@RequestParam("description") String description, @RequestParam("image") MultipartFile file,
+			HttpSession session, Model model) {
+		Item item = itemRepository.findById(itemId).get();
+		try {
+			item.setName(name);
+			item.setDescription(description);
+			itemRepository.save(item);
+			session.setAttribute("message", new Message("successfully updated your details!", "alert-success"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			session.setAttribute("message", new Message("Something went wrong!!!", "alert-danger"));
+			model.addAttribute("item", item);
+			return "redirect:edit-item/" + itemId;
+		}
+		return "redirect:manage-items/0";
 	}
 
 	@GetMapping("delete-item/{itemId}")

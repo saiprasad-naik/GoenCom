@@ -93,7 +93,10 @@
 					<button id="delete-user">Delete</button>
 				</div>
 				
+				
+				
 			</div>
+			
 			<nav aria-label="Page navigation example" th:if="${totalPages > 0}">
 				<ul class="pagination">
 					<li class="page-item" th:if="${currentPage - 1 >= 0}"><a
@@ -106,7 +109,6 @@
 						class="page-link" th:href="${currentPage} + 1">Next</a></li>
 				</ul>
 			</nav>
-			
 		</div>
 
 

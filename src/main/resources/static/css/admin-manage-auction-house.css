@@ -26,12 +26,15 @@
     margin: 2rem auto;
     width: 90%;
     text-align: center;
-    padding: 2rem auto;
+    padding: 2rem 2rem;
+	background-color: rgb(98, 98, 223);
+	border-radius: 20px;
 }
 
 .live-bid-heading {
     font-weight: 900;
     font-size: 2.5em;
+    color: white;
 }
 
 input[type="search"] {
@@ -83,7 +86,7 @@ input[type="search"] {
     float: left;
     text-align: center;
     border-radius: 20px;
-    padding-top: 10px;
+    padding: 1rem;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     background: #f2f2f2;
 }
@@ -113,7 +116,11 @@ h6 {
     color: rgb(43, 43, 43);
     margin: 0;
 }
-
+#auction-house-email{
+	text-overflow: ellipsis;
+	white-space: wrap;
+	overflow: hidden;
+}
 #suspend-auction-house,
 #delete-auction-house {
     border: none;
@@ -176,3 +183,4 @@ h6 {
     }
 
 }
+
