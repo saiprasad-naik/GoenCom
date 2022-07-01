@@ -156,9 +156,19 @@ public class AuctionHouseController {
 	}
 
 	@PostMapping("/update-details")
-	public String updateDetails(@ModelAttribute("user") User user, HttpSession session, Model model) {
+	public String updateDetails(@ModelAttribute("user") User user, HttpSession session, Model model, Principal principal) {
+		User oldUser = userRepository.getUserByEmail(principal.getName());
 		try {
-			this.userRepository.save(user);
+			oldUser.setName(user.getName());
+			oldUser.setDescription(user.getDescription());
+			oldUser.setCity(user.getCity());
+			oldUser.setCountry(user.getCountry());
+			oldUser.setPhoneNo(user.getPhoneNo());
+			oldUser.setPincode(user.getPincode());
+			oldUser.setState(user.getState());
+			oldUser.setStreet(user.getStreet());
+			oldUser.setWebsite(user.getWebsite());
+			this.userRepository.save(oldUser);
 			session.setAttribute("message", new Message("successfully updated your details!", "alert-success"));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -345,6 +355,17 @@ public class AuctionHouseController {
 			HttpSession session, Model model) {
 		Item item = itemRepository.findById(itemId).get();
 		try {
+			
+			if(!(file.isEmpty())) {
+				File deleteFile = new ClassPathResource("static/images").getFile();
+				File file1 = new File(deleteFile, item.getImages().get(0).getUrl());
+				file1.delete();
+				
+				File saveFile = new ClassPathResource("static/images").getFile();
+				Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
+				Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+				item.getImages().get(0).setUrl(file.getOriginalFilename());
+			}
 			item.setName(name);
 			item.setDescription(description);
 			itemRepository.save(item);

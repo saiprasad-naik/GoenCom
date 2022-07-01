@@ -29,7 +29,7 @@
             maxlength="50" required th:value="${item.name}"/> 
           
             <textarea name="description" id="item-desc" cols="70" rows="10" placeholder="Enter item description" th:text="${item.description}" required></textarea>
-          
+          	<img th:src="@{'/images/' + ${item.images[0].url}}">
             <input type="file" id="item-pics" name="image" placeholder="Enter pictures">
 
             <input type="number" min="0" max="100000000" step="any" name="basePrice" id="base-price" placeholder="Base price (rupees)" th:value="${item.basePrice}"  readonly>

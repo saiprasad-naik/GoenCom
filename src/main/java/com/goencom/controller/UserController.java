@@ -162,9 +162,19 @@ public class UserController {
 	}
 
 	@PostMapping("/update-user")
-	public String updateUser(@ModelAttribute("user") User user, HttpSession session, Model model) {
+	public String updateUser(@ModelAttribute("user") User user, HttpSession session, Model model, Principal principal) {
+		User oldUser = userRepository.getUserByEmail(principal.getName());
 		try {
-			this.userRepository.save(user);
+			oldUser.setfName(user.getfName());
+			oldUser.setlName(user.getlName());
+			oldUser.setCity(user.getCity());
+			oldUser.setCountry(user.getCountry());
+			oldUser.setGender(user.getGender());
+			oldUser.setPhoneNo(user.getPhoneNo());
+			oldUser.setPincode(user.getPincode());
+			oldUser.setState(user.getState());
+			oldUser.setStreet(user.getStreet());
+			this.userRepository.save(oldUser);
 			session.setAttribute("message", new Message("successfully updated your details!", "alert-success"));
 		} catch (Exception e) {
 			e.printStackTrace();
