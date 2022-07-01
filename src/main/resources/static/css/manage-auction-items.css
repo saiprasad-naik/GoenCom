@@ -145,6 +145,10 @@ span {
     font-weight: 900;
 }
 
+#delete-item{
+	width: 65%;
+}
+
 /* footer starts here */
 .footer{
     margin-top: 2rem;

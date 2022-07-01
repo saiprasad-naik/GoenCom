@@ -148,6 +148,10 @@ input[type="file"] {
     border-radius: 20px;
 }
 
+#added-pic{
+	margin: 1rem auto;
+}
+
 
 button{
    

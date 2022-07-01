@@ -86,6 +86,15 @@
     border-bottom-left-radius: 20px;
 }
 
+#bid-amount{
+	    background-color: white;
+        border: none;
+            padding: 0 .5rem;
+            width: 10%;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+}
+
 #bid-amount2{
     background-color: white;
         border: none;
@@ -275,11 +284,21 @@
              border-bottom-left-radius: 20px;
              cursor: default;
          }
+         
+         #bid-amount {
+             background-color: white;
+             border: none;
+             padding: 0 .5rem;
+             width: 60%;
+             height: 4vh;
+             border-top-left-radius: 20px;
+             border-bottom-left-radius: 20px;
+         }
     
          .content .bid #bid {
              border: none;
              padding: 0 .5rem;
-             width: 50%;
+             width: 40%;
              border-top-right-radius: 20px;
              border-bottom-right-radius: 20px;
     

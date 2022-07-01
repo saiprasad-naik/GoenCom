@@ -182,7 +182,7 @@ public class UserController {
 			session.setAttribute("message", new Message("something went wrong!", "alert-danger"));
 			return "edit-user";
 		}
-		return "redirect:profile";
+		return "redirect:/user/";
 	}
 
 	@GetMapping("/new-password")
