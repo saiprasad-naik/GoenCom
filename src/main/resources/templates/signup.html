@@ -339,7 +339,7 @@
 			</p>
 
 			<input type="tel" id="pincode" name="pincode"
-				placeholder="Enter Pincode" th:value="${user.pincode}"
+				placeholder="Enter Pincode" th:value="${user.pincode == 0}? '':${user.pincode}"
 				th:classappend="${#fields.hasErrors('pincode')?'is-invalid':''}">
 			<div id="validationServerUsernameFeedback" class="invalid-feedback"
 				th:each=" e : ${#fields.errors('pincode')}" th:text="${e}">.</div>
